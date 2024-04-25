@@ -84,6 +84,23 @@ function CustomEditor({ variables }) {
                     { open: '"', close: '"', notIn: ['string', 'comment'] },
                 ],
                 autoCloseBrackets: 'always',
+                autoIndent: 'full',
+                onEnterRules: [
+                    {
+                        // Indent when pressing Enter after an opening bracket
+                        beforeText: /[({[]$/,
+                        action: {
+                            indentAction: monaco.languages.IndentAction.Indent,
+                        }
+                    },
+                    // Unindent when pressing Enter before a closing bracket
+                    {
+                        beforeText: /^\s*(\}|\)|\])$/,
+                        action: {
+                            indentAction: monaco.languages.IndentAction.Outdent,
+                        }
+                    }
+                ]
             });
 
             monaco.editor.defineTheme("myCoolTheme", {
@@ -98,8 +115,6 @@ function CustomEditor({ variables }) {
                     { token: "custom-operator", foreground: "ff0000" },
                     { token: "function", foreground: "FFA500", fontStyle: "bold" },
                     { token: "string", foreground: "CE9178" },
-                    
-
                 ],
                 colors: {
                     "editor.foreground": "#000000",
