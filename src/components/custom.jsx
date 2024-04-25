@@ -20,13 +20,35 @@ function CustomEditor({ variables }) {
         // or make sure that it exists by other ways
         function isMathOperator(word) {
             // List of mathematical operators
-            const operators = ['+', '-', '*', '/', '=', '>', '<', '>=', '<=', '==', '!=', '&&', '||', '!', '++', '--', '%', '+=', '-=', '*=', '/=', '(', ')', '{', '}', '[', ']', ',', '.', ':', '?', ';', '+=', '-=', '*=', '/=', '%=', '<<', '>>', '>>>', '&', '|', '^', '~', '>>>', '()'];
+            const operators = ['+', '-', '*', '/', '=', '>', '<', '>=', '<=', '==', '!=', '&&', '||', '!', '++', '--', '%', '+=', '-=', '*=', '/=', '(', ')', '{', '}', '[', ']', ',', '.', ':', '?', ';', '+=', '-=', '*=', '/=', '%=', '<<', '>>', '>>>', '&', '|', '^', '~', '>>>', '()', '{}', '[]'];
             return operators.includes(word);
         }
         if (monaco) {
             console.log('here is the monaco instance:', monaco);
             monaco.languages.register({ id: "mySpecialLanguage" });
 
+            // monaco.languages.setMonarchTokensProvider("mySpecialLanguage", {
+            //     variables,
+            //     functions,
+            //     tokenizer: {
+            //         root: [
+            //             [/\[error.*/, "custom-error"],
+            //             [/\[notice.*/, "custom-notice"],
+            //             [/\[info.*/, "custom-info"],
+            //             [/\[[a-zA-Z 0-9:]+\]/, "custom-date"],
+            //             [/@?[a-zA-Z][\w$]*/, {
+            //                 cases: {
+            //                     '@variables': 'keyword',
+            //                     '@functions': 'function',
+            //                     '@default': 'variable',
+            //                 }
+            //             }],
+            //             [/[+\-*/=><]/, "custom-operator"],
+            //             [/".*?"/, 'string'],
+            //             [/\/\//, 'comment'],
+            //         ]
+            //     },
+            // });
             monaco.languages.setMonarchTokensProvider("mySpecialLanguage", {
                 variables,
                 functions,
@@ -48,6 +70,20 @@ function CustomEditor({ variables }) {
                         [/\/\//, 'comment'],
                     ]
                 },
+                bracket: [
+                    ['{', '}'],
+                    ['[', ']'],
+                    ['(', ')']
+                ]
+            });
+            monaco.languages.setLanguageConfiguration('mySpecialLanguage', {
+                autoClosingPairs: [
+                    { open: '(', close: ')' },
+                    { open: '[', close: ']' },
+                    { open: '{', close: '}' },
+                    { open: '"', close: '"', notIn: ['string', 'comment'] },
+                ],
+                autoCloseBrackets: 'always',
             });
 
             monaco.editor.defineTheme("myCoolTheme", {
@@ -62,11 +98,12 @@ function CustomEditor({ variables }) {
                     { token: "custom-operator", foreground: "ff0000" },
                     { token: "function", foreground: "FFA500", fontStyle: "bold" },
                     { token: "string", foreground: "CE9178" },
+                    
 
                 ],
                 colors: {
                     "editor.foreground": "#000000",
-                },
+                }
             });
             monaco.editor.setTheme("myCoolTheme");
 
@@ -774,6 +811,7 @@ function CustomEditor({ variables }) {
                             !word.startsWith('($') && 
                             !word.startsWith('("') && 
                             !word.endsWith('),') &&
+                            !word.startsWith('(')&&
                             !keywords.includes(word)
                         ) {
                             markers.push({
@@ -790,10 +828,9 @@ function CustomEditor({ variables }) {
     
                 monaco.editor.setModelMarkers(model, "owner", markers);
     
-    }
+            }
     
-
-            // Get the model for the editor
+             // Get the model for the editor
             const model = monaco.editor.getModels()[0];
 
             // Validate model content initially and on change
