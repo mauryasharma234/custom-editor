@@ -20,7 +20,7 @@ function CustomEditor({ variables }) {
         // or make sure that it exists by other ways
         function isMathOperator(word) {
             // List of mathematical operators
-            const operators = ['+', '-', '*', '/', '=', '>', '<', '>=', '<=', '==', '!=', '&&', '||', '!', '++', '--', '%', '+=', '-=', '*=', '/=', '(', ')', '{', '}', '[', ']', ',', '.', ':', '?', ';', '+=', '-=', '*=', '/=', '%=', '<<', '>>', '>>>', '&', '|', '^', '~', '>>>'];
+            const operators = ['+', '-', '*', '/', '=', '>', '<', '>=', '<=', '==', '!=', '&&', '||', '!', '++', '--', '%', '+=', '-=', '*=', '/=', '(', ')', '{', '}', '[', ']', ',', '.', ':', '?', ';', '+=', '-=', '*=', '/=', '%=', '<<', '>>', '>>>', '&', '|', '^', '~', '>>>', '()'];
             return operators.includes(word);
         }
         if (monaco) {
@@ -748,25 +748,7 @@ function CustomEditor({ variables }) {
                     return { suggestions: suggestions };
                 },
             });
-            // const validateModel = (model) => {
-            //     const markers = [];
-            //     for (let i = 1; i <= model.getLineCount(); i++) {
-            //         const lineContent = model.getLineContent(i);
-            //         // Your validation logic here
-            //         // Example: Check if line contains specific variable
-            //         if (lineContent.includes('yourVariable')) {
-            //             markers.push({
-            //                 message: "Invalid variable",
-            //                 severity: monaco.MarkerSeverity.Error,
-            //                 startLineNumber: i,
-            //                 startColumn: 1,
-            //                 endLineNumber: i,
-            //                 endColumn: lineContent.length + 1,
-            //             });
-            //         }
-            //     }
-            //     monaco.editor.setModelMarkers(model, "owner", markers);
-            // };
+            
             const validateModel = (model) => {
                 const markers = [];
                 const keywords = variables + functions;
@@ -785,7 +767,15 @@ function CustomEditor({ variables }) {
                         const wordStartColumn = range.startColumn + content.indexOf(word);
                         const wordEndColumn = wordStartColumn + word.length;
     
-                        if (!word.startsWith('"') && !word.endsWith('"')  && !isMathOperator(word) && !word.startsWith('$') && !word.startsWith('($') && !word.startsWith('("') && !keywords.includes(word)) {
+                        if (!word.startsWith('"') && 
+                            !word.endsWith('"')  && 
+                            !isMathOperator(word) && 
+                            !word.startsWith('$') && 
+                            !word.startsWith('($') && 
+                            !word.startsWith('("') && 
+                            !word.endsWith('),') &&
+                            !keywords.includes(word)
+                        ) {
                             markers.push({
                                 message: "Word not in double quotes or not in keywords array",
                                 severity: monaco.MarkerSeverity.Error,
@@ -812,7 +802,6 @@ function CustomEditor({ variables }) {
                 validateModel(model);
             });
            
-            
         }
     }, [monaco]);
 
