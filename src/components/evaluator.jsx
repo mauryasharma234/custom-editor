@@ -64,6 +64,131 @@ import { TEXTJOIN } from '@formulajs/formulajs';
 import { TRIM } from '@formulajs/formulajs';
 import { UPPER } from '@formulajs/formulajs';
 import { VALUE } from '@formulajs/formulajs';
+import { AVEDEV } from '@formulajs/formulajs';
+import { AVERAGE } from '@formulajs/formulajs';
+import { AVERAGEA } from '@formulajs/formulajs';
+import { AVERAGEIF } from '@formulajs/formulajs';
+import { AVERAGEIFS } from '@formulajs/formulajs';
+import { CORREL } from '@formulajs/formulajs';
+import { COUNT } from '@formulajs/formulajs';
+import { COUNTA } from '@formulajs/formulajs';
+import { COUNTBLANK } from '@formulajs/formulajs';
+import { COUNTIF } from '@formulajs/formulajs';
+import { COUNTIFS } from '@formulajs/formulajs';
+import { DEVSQ } from '@formulajs/formulajs';
+import { FISHER } from '@formulajs/formulajs';
+import { FISHERINV } from '@formulajs/formulajs';
+import { FORECAST } from '@formulajs/formulajs';
+import { FREQUENCY } from '@formulajs/formulajs';
+import { GAMMA } from '@formulajs/formulajs';
+import { GAMMALN } from '@formulajs/formulajs';
+import { GAUSS } from '@formulajs/formulajs';
+import { GEOMEAN } from '@formulajs/formulajs';
+import { GROWTH } from '@formulajs/formulajs';
+import { HARMEAN } from '@formulajs/formulajs';
+import { INTERCEPT } from '@formulajs/formulajs';
+import { KURT } from '@formulajs/formulajs';
+import { LARGE } from '@formulajs/formulajs';
+import { LINEST } from '@formulajs/formulajs';
+import { LOGEST } from '@formulajs/formulajs';
+import { MAX } from '@formulajs/formulajs';
+import { MAXA } from '@formulajs/formulajs';
+import { MAXIFS } from '@formulajs/formulajs';
+import { MEDIAN } from '@formulajs/formulajs';
+import { MIN } from '@formulajs/formulajs';
+import { MINA } from '@formulajs/formulajs';
+import { MINIFS } from '@formulajs/formulajs';
+import { PEARSON } from '@formulajs/formulajs';
+import { PERMUT } from '@formulajs/formulajs';
+import { PERMUTATIONA } from '@formulajs/formulajs';
+import { PHI } from '@formulajs/formulajs';
+import { PROB } from '@formulajs/formulajs';
+import { ROW } from '@formulajs/formulajs';
+import { RSQ } from '@formulajs/formulajs';
+import { SKEW } from '@formulajs/formulajs';
+import { SLOPE } from '@formulajs/formulajs';
+import { SMALL } from '@formulajs/formulajs';
+import { STANDARDIZE } from '@formulajs/formulajs';
+import { STDEVA } from '@formulajs/formulajs';
+import { STDEVPA } from '@formulajs/formulajs';
+import { STEYX } from '@formulajs/formulajs';
+import { TREND } from '@formulajs/formulajs';
+import { TRIMMEAN } from '@formulajs/formulajs';
+import { VARA } from '@formulajs/formulajs';
+import { VARPA } from '@formulajs/formulajs';
+import { ABS } from '@formulajs/formulajs';
+import { ACOS } from '@formulajs/formulajs';
+import { ACOSH } from '@formulajs/formulajs';
+import { ACOT } from '@formulajs/formulajs';
+import { ACOTH } from '@formulajs/formulajs';
+import { AGGREGATE } from '@formulajs/formulajs';
+import { ARABIC } from '@formulajs/formulajs';
+import { ASIN } from '@formulajs/formulajs';
+import { ASINH } from '@formulajs/formulajs';
+import { ATAN } from '@formulajs/formulajs';
+import { ATAN2 } from '@formulajs/formulajs';
+import { ATANH } from '@formulajs/formulajs';
+import { BASE } from '@formulajs/formulajs';
+import { CEILING } from '@formulajs/formulajs';
+import { COMBIN } from '@formulajs/formulajs';
+import { COMBINA } from '@formulajs/formulajs';
+import { COS } from '@formulajs/formulajs';
+import { COSH } from '@formulajs/formulajs';
+import { COT } from '@formulajs/formulajs';
+import { COTH } from '@formulajs/formulajs';
+import { CSC } from '@formulajs/formulajs';
+import { CSCH } from '@formulajs/formulajs';
+import { DECIMAL } from '@formulajs/formulajs';
+import { DEGREES } from '@formulajs/formulajs';
+import { EVEN } from '@formulajs/formulajs';
+import { EXP } from '@formulajs/formulajs';
+import { FACT } from '@formulajs/formulajs';
+import { FACTDOUBLE } from '@formulajs/formulajs';
+import { FLOOR } from '@formulajs/formulajs';
+import { GCD } from '@formulajs/formulajs';
+import { INT } from '@formulajs/formulajs';
+import { LCM } from '@formulajs/formulajs';
+import { LN } from '@formulajs/formulajs';
+import { LOG } from '@formulajs/formulajs';
+import { LOG10 } from '@formulajs/formulajs';
+import { MMULT } from '@formulajs/formulajs';
+import { MOD } from '@formulajs/formulajs';
+import { MROUND } from '@formulajs/formulajs';
+import { MULTINOMIAL } from '@formulajs/formulajs';
+import { MUNIT } from '@formulajs/formulajs';
+import { ODD } from '@formulajs/formulajs';
+import { PI } from '@formulajs/formulajs';
+import { POWER } from '@formulajs/formulajs';
+import { PRODUCT } from '@formulajs/formulajs';
+import { QUOTIENT } from '@formulajs/formulajs';
+import { RADIANS } from '@formulajs/formulajs';
+import { RAND } from '@formulajs/formulajs';
+import { RANDBETWEEN } from '@formulajs/formulajs';
+import { ROMAN } from '@formulajs/formulajs';
+import { ROUND } from '@formulajs/formulajs';
+import { ROUNDDOWN } from '@formulajs/formulajs';
+import { ROUNDUP } from '@formulajs/formulajs';
+import { SEC } from '@formulajs/formulajs';
+import { SECH } from '@formulajs/formulajs';
+import { SERIESSUM } from '@formulajs/formulajs';
+import { SIGN } from '@formulajs/formulajs';
+import { SIN } from '@formulajs/formulajs';
+import { SINH } from '@formulajs/formulajs';
+import { SQRT } from '@formulajs/formulajs';
+import { SQRTPI } from '@formulajs/formulajs';
+import { SUBTOTAL } from '@formulajs/formulajs';
+import { SUM } from '@formulajs/formulajs';
+import { SUMIF } from '@formulajs/formulajs';
+import { SUMIFS } from '@formulajs/formulajs';
+import { SUMPRODUCT } from '@formulajs/formulajs';
+import { SUMSQ } from '@formulajs/formulajs';
+import { SUMX2MY2 } from '@formulajs/formulajs';
+import { SUMX2PY2 } from '@formulajs/formulajs';
+import { SUMXMY2 } from '@formulajs/formulajs';
+import { TAN } from '@formulajs/formulajs';
+import { TANH } from '@formulajs/formulajs';
+import { TRUNC } from '@formulajs/formulajs';
+
 
 
 
@@ -74,6 +199,7 @@ export default function Evaluator({ keywords, formulaProp }) {
     // State to store the values of keyword inputs
     console.log("getting the formula",formulaProp)
     const [keywordValues, setKeywordValues] = useState({});
+    const [result, setResult] = useState();
 
     // Function to handle changes in keyword input values
     const handleKeywordValueChange = (keyword, value) => {
@@ -100,6 +226,7 @@ export default function Evaluator({ keywords, formulaProp }) {
     // Function to evaluate the formula
     const evaluateFormula = () => {
         // Replace keyword placeholders with their values in the formula
+        
         const updatedFormula = replaceKeywordsInFormula();
 
         // Evaluate the updated formula
@@ -107,27 +234,38 @@ export default function Evaluator({ keywords, formulaProp }) {
         
         // console.log('Updated Formula:', updatedFormula);
         console.log(eval(updatedFormula));
+        setResult(eval(updatedFormula));
+        // return eval(updatedFormula);
+       
     };
 
     return (
         <div>
+            <h1>Enter values for the fields</h1>
             {/* Input for entering the formula */}
 
             {keywords.map(keyword => (
                 <div key={keyword}>
                     {/* Display keyword label */}
-                    <label htmlFor={keyword}>{keyword}:</label>
+                    <label style = {{marginRight: "5px"}}htmlFor={keyword}>{keyword}:</label>
                     {/* Input for keyword value */}
                     <input
                         type="text"
                         id={keyword}
                         value={keywordValues[keyword] || ''}
                         onChange={(e) => handleKeywordValueChange(keyword, e.target.value)}
+                        style={{marginBottom: '10px'}}
                     />
                 </div>
             ))}
             {/* Button to evaluate the formula */}
-            <button onClick={evaluateFormula}>Evaluate Formula</button>
+            <button style = {{marginTop: '10px'}} onClick={evaluateFormula} >Evaluate Formula</button>
+            <div style={{marginTop: '2px'}}> 
+                Result : {result}
+            </div>
+                
+            
         </div>
+        
     );
 }

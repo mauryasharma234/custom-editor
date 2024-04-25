@@ -8,7 +8,8 @@ function CustomEditor({ variables }) {
     const monaco = useMonaco();
     const [value, setValue] = useState('');
 
-    let functions = ['AND', 'FALSE', 'IF', 'IFERROR', 'IFNA', 'IFS', 'NOT', 'OR', 'SWITCH', 'TRUE', 'XOR', 'DATE', 'DATEDIF', 'DATEVALUE', 'DAY', 'DAYS', 'DAYS360', 'EDATE', 'EOMONTH', 'HOUR', 'ISOWEEKNUM', 'MINUTE', 'MONTH', 'NETWORKDAYS', 'NOW', 'SECOND', 'TIME', 'TIMEVALUE', 'TODAY', 'WEEKDAY', 'WEEKNUM', 'WORKDAY', 'YEAR', 'YEARFRAC', 'ASC', 'BAHTTEXT', 'CHAR', 'CLEAN', 'CODE', 'CONCATENATE', 'DBCS', 'DOLLAR', 'EXACT', 'FIND', 'FIXED', 'LEFT', 'LEN', 'LOWER', 'MID', 'NUMBERVALUE', 'PRONETIC', 'PROPER', 'REPLACE', 'REPT', 'RIGHT', 'SEARCH', 'SUBSTITUTE', 'T', 'TEXT', 'TEXTJOIN', 'TRIM', 'UPPER', 'VALUE'];
+    let functions = ['AND', 'FALSE', 'IF', 'IFERROR', 'IFNA', 'IFS', 'NOT', 'OR', 'SWITCH', 'TRUE', 'XOR', 'DATE', 'DATEDIF', 'DATEVALUE', 'DAY', 'DAYS', 'DAYS360', 'EDATE', 'EOMONTH', 'HOUR', 'ISOWEEKNUM', 'MINUTE', 'MONTH', 'NETWORKDAYS', 'NOW', 'SECOND', 'TIME', 'TIMEVALUE', 'TODAY', 'WEEKDAY', 'WEEKNUM', 'WORKDAY', 'YEAR', 'YEARFRAC', 'ASC', 'BAHTTEXT', 'CHAR', 'CLEAN', 'CODE', 'CONCATENATE', 'DBCS', 'DOLLAR', 'EXACT', 'FIND', 'FIXED', 'LEFT', 'LEN', 'LOWER', 'MID', 'NUMBERVALUE', 'PRONETIC', 'PROPER', 'REPLACE', 'REPT', 'RIGHT', 'SEARCH', 'SUBSTITUTE', 'T', 'TEXT', 'TEXTJOIN', 'TRIM', 'UPPER', 'VALUE',
+    'AVEDEV', 'AVERAGE', 'AVERAGEA', 'AVERAGEIF', 'AVERAGEIFS', 'CORREL', 'COUNT', 'COUNTA', 'COUNTBLANK', 'COUNTIF', 'COUNTIFS', 'DEVSQ', 'FISHER', 'FISHERINV', 'FORECAST', 'FREQUENCY', 'GAMMA', 'GAMMALN', 'GAUSS', 'GEOMEAN', 'GROWTH', 'HARMEAN', 'INTERCEPT', 'KURT', 'LARGE', 'LINEST', 'LOGEST', 'MAX', 'MAXA', 'MAXIFS', 'MEDIAN', 'MIN', 'MINA', 'MINIFS', 'PEARSON', 'PERMUT', 'PERMUTATIONA', 'PHI', 'PROB', 'ROW', 'RSQ', 'SKEW', 'SLOPE', 'SMALL', 'STANDARDIZE', 'STDEVA', 'STDEVPA', 'STEYX', 'TREND', 'TRIMMEAN', 'VARA', 'VARPA', 'ABS', 'ACOS', 'ACOSH', 'ACOT', 'ACOTH', 'AGGREGATE', 'ARABIC', 'ASIN', 'ASINH', 'ATAN', 'ATAN2', 'ATANH', 'BASE', 'CEILING', 'COMBIN', 'COMBINA', 'COS', 'COSH', 'COT', 'COTH', 'CSC', 'CSCH', 'DECIMAL', 'DEGREES', 'EVEN', 'EXP', 'FACT', 'FACTDOUBLE', 'FLOOR', 'GCD', 'INT', 'LCM', 'LN', 'LOG', 'LOG10', 'MMULT', 'MOD', 'MROUND', 'MULTINOMIAL', 'MUNIT', 'ODD', 'PI', 'POWER', 'PRODUCT', 'QUOTIENT', 'RADIANS', 'RAND', 'RANDBETWEEN', 'ROMAN', 'ROUND', 'ROUNDDOWN', 'ROUNDUP', 'SEC', 'SECH', 'SERIESSUM', 'SIGN', 'SIN', 'SINH', 'SQRT', 'SQRTPI', 'SUBTOTAL', 'SUM', 'SUMIF', 'SUMIFS', 'SUMPRODUCT', 'SUMSQ', 'SUMX2MY2', 'SUMX2PY2', 'SUMXMY2', 'TAN', 'TANH', 'TRUNC'];
     useEffect(() => {
         // do conditional chaining
         console.log("value", value);
@@ -757,6 +758,1244 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
+                    if (word && word.word == "AVEDEV") {
+                        return {
+                            contents: [
+                                { value: "**AVEDEV Statement**" },
+                                { value: "Returns the average of the absolute deviations of data points from their mean.Category: Statistical" },
+                                { value: "Syntax: AVEDEV(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "AVERAGE") {
+                        return {
+                            contents: [
+                                { value: "**AVERAGE Statement**" },
+                                { value: "Returns the average of its arguments.Category: Statistical" },
+                                { value: "Syntax: AVERAGE(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "AVERAGEA") {
+                        return {
+                            contents: [
+                                { value: "**AVERAGEA Statement**" },
+                                { value: "Returns the average of its arguments, including numbers, text, and logical values.Category: Statistical" },
+                                { value: "Syntax: AVERAGEA(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "AVERAGEIF") {
+                        return {
+                            contents: [
+                                { value: "**AVERAGEIF Statement**" },
+                                { value: "Returns the average (arithmetic mean) of all the values in a range that meet a given criteria.Category: Statistical" },
+                                { value: "Syntax: AVERAGEIF(range, criteria, average_range)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "AVERAGEIFS") {
+                        return {
+                            contents: [
+                                { value: "**AVERAGEIFS Statement**" },
+                                { value: "Returns the average (arithmetic mean) of all values that meet multiple criteria.Category: Statistical" },
+                                { value: "Syntax: AVERAGEIFS(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "CORREL") {
+                        return {
+                            contents: [
+                                { value: "**CORREL Statement**" },
+                                { value: "Returns the correlation coefficient between two data sets.Category: Statistical" },
+                                { value: "Syntax: CORREL(array1, array2)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "COUNT") {
+                        return {
+                            contents: [
+                                { value: "**COUNT Statement**" },
+                                { value: "Counts how many numbers are in the list of arguments.Category: Statistical" },
+                                { value: "Syntax: COUNT(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "COUNTA") {
+                        return {
+                            contents: [
+                                { value: "**COUNTA Statement**" },
+                                { value: "Counts how many values are in the list of arguments.Category: Statistical" },
+                                { value: "Syntax: COUNTA(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "COUNTBLANK") {
+                        return {
+                            contents: [
+                                { value: "**COUNTBLANK Statement**" },
+                                { value: "Counts the number of blank values within a range.Category: Statistical" },
+                                { value: "Syntax: COUNTBLANK(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "COUNTIF") {
+                        return {
+                            contents: [
+                                { value: "**COUNTIF Statement**" },
+                                { value: "Counts the number of values within a range that meet the given criteria.Category: Statistical" },
+                                { value: "Syntax: COUNTIF()" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "COUNTIFS") {
+                        return {
+                            contents: [
+                                { value: "**COUNTIFS Statement**" },
+                                { value: "Counts the number of values within a range that meet multiple criteria.Category: Statistical" },
+                                { value: "Syntax: COUNTIFS(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "DEVSQ") {
+                        return {
+                            contents: [
+                                { value: "**DEVSQ Statement**" },
+                                { value: "Returns the sum of squares of deviations.Category: Statistical" },
+                                { value: "Syntax: DEVSQ(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "FISHER") {
+                        return {
+                            contents: [
+                                { value: "**FISHER Statement**" },
+                                { value: "Returns the Fisher transformation.Category: Statistical" },
+                                { value: "Syntax: FISHER(x)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "FISHERINV") {
+                        return {
+                            contents: [
+                                { value: "**FISHERINV Statement**" },
+                                { value: "Returns the inverse of the Fisher transformation.Category: Statistical" },
+                                { value: "Syntax: FISHERINV(y)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "FORECAST") {
+                        return {
+                            contents: [
+                                { value: "**FORECAST Statement**" },
+                                { value: "Returns a value along a linear trend.Category: Statistical" },
+                                { value: "Syntax: FORECAST(x, known_ys, known_xs)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "FREQUENCY") {
+                        return {
+                            contents: [
+                                { value: "**FREQUENCY Statement**" },
+                                { value: "Returns a frequency distribution as a vertical array.Category: Statistical" },
+                                { value: "Syntax: FREQUENCY(data_array, bins_array)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "GAMMA") {
+                        return {
+                            contents: [
+                                { value: "**GAMMA Statement**" },
+                                { value: "Returns the Gamma function value.Category: Statistical" },
+                                { value: "Syntax: GAMMA(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "GAMMALN") {
+                        return {
+                            contents: [
+                                { value: "**GAMMALN Statement**" },
+                                { value: "Returns the natural logarithm of the gamma function, Γ(x).Category: Statistical" },
+                                { value: "Syntax: GAMMALN(x)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "GAUSS") {
+                        return {
+                            contents: [
+                                { value: "**GAUSS Statement**" },
+                                { value: "Returns 0.5 less than the standard normal cumulative distribution.Category: Statistical" },
+                                { value: "Syntax: GAUSS(z)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "GEOMEAN") {
+                        return {
+                            contents: [
+                                { value: "**GEOMEAN Statement**" },
+                                { value: "Returns the geometric mean.Category: Statistical" },
+                                { value: "Syntax: GEOMEAN(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "GROWTH") {
+                        return {
+                            contents: [
+                                { value: "**GROWTH Statement**" },
+                                { value: "Returns values along an exponential trend.Category: Statistical" },
+                                { value: "Syntax: GROWTH(known_y, known_x, new_x, use_const)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "HARMEAN") {
+                        return {
+                            contents: [
+                                { value: "**HARMEAN Statement**" },
+                                { value: "Returns the harmonic mean.Category: Statistical" },
+                                { value: "Syntax: HARMEAN(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "INTERCEPT") {
+                        return {
+                            contents: [
+                                { value: "**INTERCEPT Statement**" },
+                                { value: "Returns the intercept of the linear regression line.Category: Statistical" },
+                                { value: "Syntax: INTERCEPT(known_y, known_x)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "KURT") {
+                        return {
+                            contents: [
+                                { value: "**KURT Statement**" },
+                                { value: "Returns the kurtosis of a data set.Category: Statistical" },
+                                { value: "Syntax: KURT(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "LARGE") {
+                        return {
+                            contents: [
+                                { value: "**LARGE Statement**" },
+                                { value: "Returns the k-th largest value in a data set.Category: Statistical" },
+                                { value: "Syntax: LARGE(array, k)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "LINEST") {
+                        return {
+                            contents: [
+                                { value: "**LINEST Statement**" },
+                                { value: "Returns the parameters of a linear trend.Category: Statistical" },
+                                { value: "Syntax: LINEST(known_y, known_x)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "LOGEST") {
+                        return {
+                            contents: [
+                                { value: "**LOGEST Statement**" },
+                                { value: "Returns the parameters of an exponential trend.Category: Statistical" },
+                                { value: "Syntax: LOGEST(known_y, known_x)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "MAX") {
+                        return {
+                            contents: [
+                                { value: "**MAX Statement**" },
+                                { value: "Returns the maximum value in a list of arguments.Category: Statistical" },
+                                { value: "Syntax: MAX(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "MAXA") {
+                        return {
+                            contents: [
+                                { value: "**MAXA Statement**" },
+                                { value: "Returns the maximum value in a list of arguments, including numbers, text, and logical values.Category: Statistical" },
+                                { value: "Syntax: MAXA(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "MAXIFS") {
+                        return {
+                            contents: [
+                                { value: "**MAXIFS Statement**" },
+                                { value: "Returns the maximum of all values in a range that meet multiple criteria.Category: Statistical" },
+                                { value: "Syntax: MAXIFS()" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "MEDIAN") {
+                        return {
+                            contents: [
+                                { value: "**MEDIAN Statement**" },
+                                { value: "Returns the median of the given numbers.Category: Statistical" },
+                                { value: "Syntax: MEDIAN(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "MIN") {
+                        return {
+                            contents: [
+                                { value: "**MIN Statement**" },
+                                { value: "Returns the minimum value in a list of arguments.Category: Statistical" },
+                                { value: "Syntax: MIN(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "MINA") {
+                        return {
+                            contents: [
+                                { value: "**MINA Statement**" },
+                                { value: "Returns the smallest value in a list of arguments, including numbers, text, and logical values.Category: Statistical" },
+                                { value: "Syntax: MINA(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "MINIFS") {
+                        return {
+                            contents: [
+                                { value: "**MINIFS Statement**" },
+                                { value: "Returns the minimum of all values in a range that meet multiple criteria.Category: Statistical" },
+                                { value: "Syntax: MINIFS()" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "PEARSON") {
+                        return {
+                            contents: [
+                                { value: "**PEARSON Statement**" },
+                                { value: "Returns the Pearson product moment correlation coefficient.Category: Statistical" },
+                                { value: "Syntax: PEARSON(array1, array2)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "PERMUT") {
+                        return {
+                            contents: [
+                                { value: "**PERMUT Statement**" },
+                                { value: "Returns the number of permutations for a given number of objects.Category: Statistical" },
+                                { value: "Syntax: PERMUT(number, number_chosen)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "PERMUTATIONA") {
+                        return {
+                            contents: [
+                                { value: "**PERMUTATIONA Statement**" },
+                                { value: "Returns the number of permutations for a given number of objects (with repetitions) that can be selected from the total objects.Category: Statistical" },
+                                { value: "Syntax: PERMUTATIONA(number, number_chosen)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "PHI") {
+                        return {
+                            contents: [
+                                { value: "**PHI Statement**" },
+                                { value: "Returns the value of the density function for a standard normal distribution.Category: Statistical" },
+                                { value: "Syntax: PHI(x)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "PROB") {
+                        return {
+                            contents: [
+                                { value: "**PROB Statement**" },
+                                { value: "Returns the probability that values in a range are between two limits.Category: Statistical" },
+                                { value: "Syntax: PROB(x_range, prob_range, lower_limit, upper_limit)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ROW") {
+                        return {
+                            contents: [
+                                { value: "**ROW Statement**" },
+                                { value: "Returns the row number of a reference.Category: Lookup and reference" },
+                                { value: "Syntax: ROW(reference, index)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "RSQ") {
+                        return {
+                            contents: [
+                                { value: "**RSQ Statement**" },
+                                { value: "Returns the square of the Pearson product moment correlation coefficient.Category: Statistical" },
+                                { value: "Syntax: RSQ(known_y, known_x)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SKEW") {
+                        return {
+                            contents: [
+                                { value: "**SKEW Statement**" },
+                                { value: "Returns the skewness of a distribution.Category: Statistical" },
+                                { value: "Syntax: SKEW(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SLOPE") {
+                        return {
+                            contents: [
+                                { value: "**SLOPE Statement**" },
+                                { value: "Returns the slope of the linear regression line.Category: Statistical" },
+                                { value: "Syntax: SLOPE(known_y, known_x)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SMALL") {
+                        return {
+                            contents: [
+                                { value: "**SMALL Statement**" },
+                                { value: "Returns the k-th smallest value in a data set.Category: Statistical" },
+                                { value: "Syntax: SMALL(array, k)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "STANDARDIZE") {
+                        return {
+                            contents: [
+                                { value: "**STANDARDIZE Statement**" },
+                                { value: "Returns a normalized value.Category: Statistical" },
+                                { value: "Syntax: STANDARDIZE(x, mean, standard_dev)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "STDEVA") {
+                        return {
+                            contents: [
+                                { value: "**STDEVA Statement**" },
+                                { value: "Estimates standard deviation based on a sample, including numbers, text, and logical values.Category: Statistical" },
+                                { value: "Syntax: STDEVA(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "STDEVPA") {
+                        return {
+                            contents: [
+                                { value: "**STDEVPA Statement**" },
+                                { value: "Calculates standard deviation based on the entire population, including numbers, text, and logical values.Category: Statistical" },
+                                { value: "Syntax: STDEVPA(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "STEYX") {
+                        return {
+                            contents: [
+                                { value: "**STEYX Statement**" },
+                                { value: "Returns the standard error of the predicted y-value for each x in the regression.Category: Statistical" },
+                                { value: "Syntax: STEYX(known_y, known_x)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "TREND") {
+                        return {
+                            contents: [
+                                { value: "**TREND Statement**" },
+                                { value: "Returns values along a linear trend.Category: Statistical" },
+                                { value: "Syntax: TREND(known_ys, known_xs, new_xs)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "TRIMMEAN") {
+                        return {
+                            contents: [
+                                { value: "**TRIMMEAN Statement**" },
+                                { value: "Returns the mean of the interior of a data set.Category: Statistical" },
+                                { value: "Syntax: TRIMMEAN(array, percent)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "VARA") {
+                        return {
+                            contents: [
+                                { value: "**VARA Statement**" },
+                                { value: "Estimates variance based on a sample, including numbers, text, and logical values.Category: Statistical" },
+                                { value: "Syntax: VARA(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "VARPA") {
+                        return {
+                            contents: [
+                                { value: "**VARPA Statement**" },
+                                { value: "Calculates variance based on the entire population, including numbers, text, and logical values.Category: Statistical" },
+                                { value: "Syntax: VARPA(args)" }
+                            ]
+                        }
+                    }
+                    if (word && word.word == "ABS") {
+                        return {
+                            contents: [
+                                { value: "**ABS Statement**" },
+                                { value: "Returns the absolute value of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: ABS(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ACOS") {
+                        return {
+                            contents: [
+                                { value: "**ACOS Statement**" },
+                                { value: "Returns the arccosine of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: ACOS(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ACOSH") {
+                        return {
+                            contents: [
+                                { value: "**ACOSH Statement**" },
+                                { value: "Returns the inverse hyperbolic cosine of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: ACOSH(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ACOT") {
+                        return {
+                            contents: [
+                                { value: "**ACOT Statement**" },
+                                { value: "Returns the arccotangent of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: ACOT(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ACOTH") {
+                        return {
+                            contents: [
+                                { value: "**ACOTH Statement**" },
+                                { value: "Returns the hyperbolic arccotangent of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: ACOTH(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "AGGREGATE") {
+                        return {
+                            contents: [
+                                { value: "**AGGREGATE Statement**" },
+                                { value: "Returns an aggregate in a list or database.Category: Math and trigonometry" },
+                                { value: "Syntax: AGGREGATE(function_num, options, ref1, ref2)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ARABIC") {
+                        return {
+                            contents: [
+                                { value: "**ARABIC Statement**" },
+                                { value: "Converts a Roman number to Arabic, as a number.Category: Math and trigonometry" },
+                                { value: "Syntax: ARABIC(text)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ASIN") {
+                        return {
+                            contents: [
+                                { value: "**ASIN Statement**" },
+                                { value: "Returns the arcsine of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: ASIN(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ASINH") {
+                        return {
+                            contents: [
+                                { value: "**ASINH Statement**" },
+                                { value: "Returns the inverse hyperbolic sine of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: ASINH(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ATAN") {
+                        return {
+                            contents: [
+                                { value: "**ATAN Statement**" },
+                                { value: "Returns the arctangent of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: ATAN(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ATAN2") {
+                        return {
+                            contents: [
+                                { value: "**ATAN2 Statement**" },
+                                { value: "Returns the arctangent from x- and y-coordinates.Category: Math and trigonometry" },
+                                { value: "Syntax: ATAN2(x_num, y_num)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ATANH") {
+                        return {
+                            contents: [
+                                { value: "**ATANH Statement**" },
+                                { value: "Returns the inverse hyperbolic tangent of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: ATANH(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "BASE") {
+                        return {
+                            contents: [
+                                { value: "**BASE Statement**" },
+                                { value: "Converts a number into a text representation with the given radix (base).Category: Math and trigonometry" },
+                                { value: "Syntax: BASE(number, radix, min_length)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "CEILING") {
+                        return {
+                            contents: [
+                                { value: "**CEILING Statement**" },
+                                { value: "Rounds a number to the nearest integer or to the nearest multiple of significance.Category: Math and trigonometry" },
+                                { value: "Syntax: CEILING(number, significance, mode)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "COMBIN") {
+                        return {
+                            contents: [
+                                { value: "**COMBIN Statement**" },
+                                { value: "Returns the number of combinations for a given number of objects.Category: Math and trigonometry" },
+                                { value: "Syntax: COMBIN(number, number_chosen)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "COMBINA") {
+                        return {
+                            contents: [
+                                { value: "**COMBINA Statement**" },
+                                { value: "Returns the number of combinations with repetitions for a given number of items.Category: Math and trigonometry" },
+                                { value: "Syntax: COMBINA(number, number_chosen)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "COS") {
+                        return {
+                            contents: [
+                                { value: "**COS Statement**" },
+                                { value: "Returns the cosine of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: COS(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "COSH") {
+                        return {
+                            contents: [
+                                { value: "**COSH Statement**" },
+                                { value: "Returns the hyperbolic cosine of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: COSH(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "COT") {
+                        return {
+                            contents: [
+                                { value: "**COT Statement**" },
+                                { value: "Returns the hyperbolic cosine of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: COT(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "COTH") {
+                        return {
+                            contents: [
+                                { value: "**COTH Statement**" },
+                                { value: "Returns the cotangent of an angle.Category: Math and trigonometry" },
+                                { value: "Syntax: COTH(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "CSC") {
+                        return {
+                            contents: [
+                                { value: "**CSC Statement**" },
+                                { value: "Returns the cosecant of an angle.Category: Math and trigonometry" },
+                                { value: "Syntax: CSC(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "CSCH") {
+                        return {
+                            contents: [
+                                { value: "**CSCH Statement**" },
+                                { value: "Returns the hyperbolic cosecant of an angle.Category: Math and trigonometry" },
+                                { value: "Syntax: CSCH(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "DECIMAL") {
+                        return {
+                            contents: [
+                                { value: "**DECIMAL Statement**" },
+                                { value: "Converts a text representation of a number in a given base into a decimal number.Category: Math and trigonometry" },
+                                { value: "Syntax: DECIMAL(text, radix)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "DEGREES") {
+                        return {
+                            contents: [
+                                { value: "**DEGREES Statement**" },
+                                { value: "Converts radians to degrees.Category: Math and trigonometry" },
+                                { value: "Syntax: DEGREES(angle)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "EVEN") {
+                        return {
+                            contents: [
+                                { value: "**EVEN Statement**" },
+                                { value: "Rounds a number up to the nearest even integer.Category: Math and trigonometry" },
+                                { value: "Syntax: EVEN(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "EXP") {
+                        return {
+                            contents: [
+                                { value: "**EXP Statement**" },
+                                { value: "Returns e raised to the power of a given number.Category: Math and trigonometry" },
+                                { value: "Syntax: EXP(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "FACT") {
+                        return {
+                            contents: [
+                                { value: "**FACT Statement**" },
+                                { value: "Returns the factorial of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: FACT(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "FACTDOUBLE") {
+                        return {
+                            contents: [
+                                { value: "**FACTDOUBLE Statement**" },
+                                { value: "Returns the double factorial of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: FACTDOUBLE(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "FLOOR") {
+                        return {
+                            contents: [
+                                { value: "**FLOOR Statement**" },
+                                { value: "Rounds a number down, toward zero.Category: Math and trigonometry" },
+                                { value: "Syntax: FLOOR(number, significance)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "GCD") {
+                        return {
+                            contents: [
+                                { value: "**GCD Statement**" },
+                                { value: "Returns the greatest common divisor.Category: Math and trigonometry" },
+                                { value: "Syntax: GCD(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "INT") {
+                        return {
+                            contents: [
+                                { value: "**INT Statement**" },
+                                { value: "Rounds a number down to the nearest integer.Category: Math and trigonometry" },
+                                { value: "Syntax: INT(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "LCM") {
+                        return {
+                            contents: [
+                                { value: "**LCM Statement**" },
+                                { value: "Returns the least common multiple.Category: Math and trigonometry" },
+                                { value: "Syntax: LCM(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "LN") {
+                        return {
+                            contents: [
+                                { value: "**LN Statement**" },
+                                { value: "Returns the natural logarithm of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: LN(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "LOG") {
+                        return {
+                            contents: [
+                                { value: "**LOG Statement**" },
+                                { value: "Returns the logarithm of a number to a specified base.Category: Math and trigonometry" },
+                                { value: "Syntax: LOG(number, base)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "LOG10") {
+                        return {
+                            contents: [
+                                { value: "**LOG10 Statement**" },
+                                { value: "Returns the base-10 logarithm of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: LOG10(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "MMULT") {
+                        return {
+                            contents: [
+                                { value: "**MMULT Statement**" },
+                                { value: "Returns the matrix product of two arrays. The result is an array with the same number of rows as array1 and the same number of columns as array2.Category: Math and trigonometry" },
+                                { value: "Syntax: MMULT(array1, array2)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "MOD") {
+                        return {
+                            contents: [
+                                { value: "**MOD Statement**" },
+                                { value: "Returns the remainder from division.Category: Math and trigonometry" },
+                                { value: "Syntax: MOD(number, divisor)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "MROUND") {
+                        return {
+                            contents: [
+                                { value: "**MROUND Statement**" },
+                                { value: "Returns a number rounded to the desired multiple.Category: Math and trigonometry" },
+                                { value: "Syntax: MROUND(number, multiple)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "MULTINOMIAL") {
+                        return {
+                            contents: [
+                                { value: "**MULTINOMIAL Statement**" },
+                                { value: "Returns the multinomial of a set of numbers.Category: Math and trigonometry" },
+                                { value: "Syntax: MULTINOMIAL(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "MUNIT") {
+                        return {
+                            contents: [
+                                { value: "**MUNIT Statement**" },
+                                { value: "Returns the unit matrix for the specified dimension.Category: Math and trigonometry" },
+                                { value: "Syntax: MUNIT(dimension)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ODD") {
+                        return {
+                            contents: [
+                                { value: "**ODD Statement**" },
+                                { value: "Rounds a number up to the nearest odd integer.Category: Math and trigonometry" },
+                                { value: "Syntax: ODD(number:)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "PI") {
+                        return {
+                            contents: [
+                                { value: "**PI Statement**" },
+                                { value: "Returns the value of pi.Category: Math and trigonometry" },
+                                { value: "Syntax: PI()" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "POWER") {
+                        return {
+                            contents: [
+                                { value: "**POWER Statement**" },
+                                { value: "Returns the result of a number raised to a power.Category: Math and trigonometry" },
+                                { value: "Syntax: POWER(number, power)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "PRODUCT") {
+                        return {
+                            contents: [
+                                { value: "**PRODUCT Statement**" },
+                                { value: "Multiplies its arguments.Category: Math and trigonometry" },
+                                { value: "Syntax: PRODUCT(number1, args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "QUOTIENT") {
+                        return {
+                            contents: [
+                                { value: "**QUOTIENT Statement**" },
+                                { value: "Returns the integer portion of a division.Category: Math and trigonometry" },
+                                { value: "Syntax: QUOTIENT(numerator, denominator)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "RADIANS") {
+                        return {
+                            contents: [
+                                { value: "**RADIANS Statement**" },
+                                { value: "Converts degrees to radians.Category: Math and trigonometry" },
+                                { value: "Syntax: RADIANS(angle)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "RAND") {
+                        return {
+                            contents: [
+                                { value: "**RAND Statement**" },
+                                { value: "Returns a random number between 0 and 1.Category: Math and trigonometry" },
+                                { value: "Syntax: RAND()" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "RANDBETWEEN") {
+                        return {
+                            contents: [
+                                { value: "**RANDBETWEEN Statement**" },
+                                { value: "Returns a random number between the numbers you specify.Category: Math and trigonometry" },
+                                { value: "Syntax: RANDBETWEEN(bottom, top)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ROMAN") {
+                        return {
+                            contents: [
+                                { value: "**ROMAN Statement**" },
+                                { value: "Converts an arabic numeral to roman, as text.Category: Math and trigonometry" },
+                                { value: "Syntax: ROMAN(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ROUND") {
+                        return {
+                            contents: [
+                                { value: "**ROUND Statement**" },
+                                { value: "Rounds a number to a specified number of digits.Category: Math and trigonometry" },
+                                { value: "Syntax: ROUND(number, num_digits)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ROUNDDOWN") {
+                        return {
+                            contents: [
+                                { value: "**ROUNDDOWN Statement**" },
+                                { value: "Rounds a number down, toward zero.Category: Math and trigonometry" },
+                                { value: "Syntax: ROUNDDOWN(number, num_digits)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "ROUNDUP") {
+                        return {
+                            contents: [
+                                { value: "**ROUNDUP Statement**" },
+                                { value: "Rounds a number up, away from zero.Category: Math and trigonometry" },
+                                { value: "Syntax: ROUNDUP(number, num_digits)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SEC") {
+                        return {
+                            contents: [
+                                { value: "**SEC Statement**" },
+                                { value: "Returns the secant of an angle.Category: Math and trigonometry" },
+                                { value: "Syntax: SEC(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SECH") {
+                        return {
+                            contents: [
+                                { value: "**SECH Statement**" },
+                                { value: "Returns the hyperbolic secant of an angle.Category: Math and trigonometry" },
+                                { value: "Syntax: SECH(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SERIESSUM") {
+                        return {
+                            contents: [
+                                { value: "**SERIESSUM Statement**" },
+                                { value: "Returns the sum of a power series based on the formula.Category: Math and trigonometry" },
+                                { value: "Syntax: SERIESSUM(x, n, m, coefficients)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SIGN") {
+                        return {
+                            contents: [
+                                { value: "**SIGN Statement**" },
+                                { value: "Returns the sign of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: SIGN(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SIN") {
+                        return {
+                            contents: [
+                                { value: "**SIN Statement**" },
+                                { value: "Returns the sine of the given angle.Category: Math and trigonometry" },
+                                { value: "Syntax: SIN(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SINH") {
+                        return {
+                            contents: [
+                                { value: "**SINH Statement**" },
+                                { value: "Returns the hyperbolic sine of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: SINH(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SQRT") {
+                        return {
+                            contents: [
+                                { value: "**SQRT Statement**" },
+                                { value: "Returns a positive square root.Category: Math and trigonometry" },
+                                { value: "Syntax: SQRT(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SQRTPI") {
+                        return {
+                            contents: [
+                                { value: "**SQRTPI Statement**" },
+                                { value: "Returns the square root of (number * pi).Category: Math and trigonometry" },
+                                { value: "Syntax: SQRTPI(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SUBTOTAL") {
+                        return {
+                            contents: [
+                                { value: "**SUBTOTAL Statement**" },
+                                { value: "Returns a subtotal in a list or database.Category: Math and trigonometry" },
+                                { value: "Syntax: SUBTOTAL(function_num, ref1)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SUM") {
+                        return {
+                            contents: [
+                                { value: "**SUM Statement**" },
+                                { value: "Adds its arguments.Category: Math and trigonometry" },
+                                { value: "Syntax: SUM()" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SUMIF") {
+                        return {
+                            contents: [
+                                { value: "**SUMIF Statement**" },
+                                { value: "Adds the values specified by a given criteria.Category: Math and trigonometry" },
+                                { value: "Syntax: SUMIF(range, criteria, sum_range)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SUMIFS") {
+                        return {
+                            contents: [
+                                { value: "**SUMIFS Statement**" },
+                                { value: "Adds the values in a range that meet multiple criteria.Category: Math and trigonometry" },
+                                { value: "Syntax: SUMIFS()" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SUMPRODUCT") {
+                        return {
+                            contents: [
+                                { value: "**SUMPRODUCT Statement**" },
+                                { value: "Returns the sum of the products of corresponding array components.Category: Math and trigonometry" },
+                                { value: "Syntax: SUMPRODUCT()" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SUMSQ") {
+                        return {
+                            contents: [
+                                { value: "**SUMSQ Statement**" },
+                                { value: "Returns the sum of the squares of the arguments.Category: Math and trigonometry" },
+                                { value: "Syntax: SUMSQ(args)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SUMX2MY2") {
+                        return {
+                            contents: [
+                                { value: "**SUMX2MY2 Statement**" },
+                                { value: "Returns the sum of the difference of squares of corresponding values in two arrays.Category: Math and trigonometry" },
+                                { value: "Syntax: SUMX2MY2(array_x, array_y)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SUMX2PY2") {
+                        return {
+                            contents: [
+                                { value: "**SUMX2PY2 Statement**" },
+                                { value: "Returns the sum of the sum of squares of corresponding values in two arrays.Category: Math and trigonometry" },
+                                { value: "Syntax: SUMX2PY2(array_x, array_y)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "SUMXMY2") {
+                        return {
+                            contents: [
+                                { value: "**SUMXMY2 Statement**" },
+                                { value: "Returns the sum of squares of differences of corresponding values in two arrays.Category: Math and trigonometry" },
+                                { value: "Syntax: SUMXMY2(array_x, array_y)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "TAN") {
+                        return {
+                            contents: [
+                                { value: "**TAN Statement**" },
+                                { value: "Returns the tangent of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: TAN(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "TANH") {
+                        return {
+                            contents: [
+                                { value: "**TANH Statement**" },
+                                { value: "Returns the hyperbolic tangent of a number.Category: Math and trigonometry" },
+                                { value: "Syntax: TANH(number)" }
+                            ]
+                        }
+                    }
+                    
+                    if (word && word.word == "TRUNC") {
+                        return {
+                            contents: [
+                                { value: "**TRUNC Statement**" },
+                                { value: "Truncates a number to an integer.Category: Math and trigonometry" },
+                                { value: "Syntax: TRUNC(number, num_digits)" }
+                            ]
+                        }
+                    }
                     return null;
                 }
             });
@@ -1307,6 +2546,998 @@ function CustomEditor({ variables }) {
                             insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
                             documentation: 'VALUE STATEMENT',
                             range: range,
+                        },
+                        {
+                            label: 'AVEDEV',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'AVEDEV (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'AVEDEV STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'AVERAGE',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'AVERAGE (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'AVERAGE STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'AVERAGEA',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'AVERAGEA (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'AVERAGEA STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'AVERAGEIF',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'AVERAGEIF (${1:range}, ${2:criteria}, ${3:average_range})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'AVERAGEIF STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'AVERAGEIFS',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'AVERAGEIFS (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'AVERAGEIFS STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'CORREL',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'CORREL (${1:array1}, ${2:array2})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'CORREL STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'COUNT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'COUNT (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'COUNT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'COUNTA',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'COUNTA (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'COUNTA STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'COUNTBLANK',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'COUNTBLANK (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'COUNTBLANK STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'COUNTIF',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'COUNTIF ()',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'COUNTIF STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'COUNTIFS',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'COUNTIFS (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'COUNTIFS STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'DEVSQ',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'DEVSQ (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'DEVSQ STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'FISHER',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'FISHER (${1:x})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'FISHER STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'FISHERINV',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'FISHERINV (${1:y})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'FISHERINV STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'FORECAST',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'FORECAST (${1:x}, ${2:known_ys}, ${3:known_xs})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'FORECAST STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'FREQUENCY',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'FREQUENCY (${1:data_array}, ${2:bins_array})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'FREQUENCY STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'GAMMA',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'GAMMA (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'GAMMA STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'GAMMALN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'GAMMALN (${1:x})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'GAMMALN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'GAUSS',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'GAUSS (${1:z})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'GAUSS STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'GEOMEAN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'GEOMEAN (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'GEOMEAN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'GROWTH',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'GROWTH (${1:known_y}, ${2:known_x}, ${3:new_x}, ${4:use_const})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'GROWTH STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'HARMEAN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'HARMEAN (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'HARMEAN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'INTERCEPT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'INTERCEPT (${1:known_y}, ${2:known_x})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'INTERCEPT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'KURT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'KURT (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'KURT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'LARGE',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'LARGE (${1:array}, ${2:k})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'LARGE STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'LINEST',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'LINEST (${1:known_y}, ${2:known_x})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'LINEST STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'LOGEST',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'LOGEST (${1:known_y}, ${2:known_x})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'LOGEST STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'MAX',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'MAX (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'MAX STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'MAXA',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'MAXA (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'MAXA STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'MAXIFS',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'MAXIFS ()',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'MAXIFS STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'MEDIAN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'MEDIAN (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'MEDIAN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'MIN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'MIN (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'MIN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'MINA',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'MINA (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'MINA STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'MINIFS',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'MINIFS ()',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'MINIFS STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'PEARSON',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'PEARSON (${1:array1}, ${2:array2})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'PEARSON STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'PERMUT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'PERMUT (${1:number}, ${2:number_chosen})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'PERMUT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'PERMUTATIONA',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'PERMUTATIONA (${1:number}, ${2:number_chosen})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'PERMUTATIONA STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'PHI',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'PHI (${1:x})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'PHI STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'PROB',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'PROB (${1:x_range}, ${2:prob_range}, ${3:lower_limit}, ${4:upper_limit})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'PROB STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ROW',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ROW (${1:reference}, ${2:index})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ROW STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'RSQ',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'RSQ (${1:known_y}, ${2:known_x})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'RSQ STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SKEW',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SKEW (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SKEW STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SLOPE',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SLOPE (${1:known_y}, ${2:known_x})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SLOPE STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SMALL',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SMALL (${1:array}, ${2:k})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SMALL STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'STANDARDIZE',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'STANDARDIZE (${1:x}, ${2:mean}, ${3:standard_dev})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'STANDARDIZE STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'STDEVA',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'STDEVA (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'STDEVA STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'STDEVPA',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'STDEVPA (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'STDEVPA STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'STEYX',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'STEYX (${1:known_y}, ${2:known_x})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'STEYX STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'TREND',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'TREND (${1:known_ys}, ${2:known_xs}, ${3:new_xs})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'TREND STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'TRIMMEAN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'TRIMMEAN (${1:array}, ${2:percent})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'TRIMMEAN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'VARA',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'VARA (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'VARA STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'VARPA',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'VARPA (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'VARPA STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ABS',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ABS (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ABS STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ACOS',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ACOS (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ACOS STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ACOSH',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ACOSH (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ACOSH STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ACOT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ACOT (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ACOT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ACOTH',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ACOTH (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ACOTH STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'AGGREGATE',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'AGGREGATE (${1:function_num}, ${2:options}, ${3:ref1}, ${4:ref2})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'AGGREGATE STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ARABIC',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ARABIC (${1:text})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ARABIC STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ASIN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ASIN (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ASIN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ASINH',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ASINH (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ASINH STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ATAN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ATAN (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ATAN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ATAN2',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ATAN2 (${1:x_num}, ${2:y_num})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ATAN2 STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ATANH',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ATANH (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ATANH STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'BASE',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'BASE (${1:number}, ${2:radix}, ${3:min_length})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'BASE STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'CEILING',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'CEILING (${1:number}, ${2:significance}, ${3:mode})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'CEILING STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'COMBIN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'COMBIN (${1:number}, ${2:number_chosen})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'COMBIN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'COMBINA',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'COMBINA (${1:number}, ${2:number_chosen})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'COMBINA STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'COS',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'COS (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'COS STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'COSH',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'COSH (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'COSH STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'COT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'COT (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'COT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'COTH',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'COTH (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'COTH STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'CSC',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'CSC (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'CSC STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'CSCH',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'CSCH (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'CSCH STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'DECIMAL',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'DECIMAL (${1:text}, ${2:radix})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'DECIMAL STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'DEGREES',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'DEGREES (${1:angle})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'DEGREES STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'EVEN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'EVEN (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'EVEN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'EXP',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'EXP (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'EXP STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'FACT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'FACT (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'FACT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'FACTDOUBLE',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'FACTDOUBLE (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'FACTDOUBLE STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'FLOOR',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'FLOOR (${1:number}, ${2:significance})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'FLOOR STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'GCD',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'GCD (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'GCD STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'INT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'INT (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'INT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'LCM',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'LCM (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'LCM STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'LN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'LN (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'LN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'LOG',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'LOG (${1:number}, ${2:base})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'LOG STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'LOG10',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'LOG10 (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'LOG10 STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'MMULT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'MMULT (${1:array1}, ${2:array2})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'MMULT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'MOD',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'MOD (${1:number}, ${2:divisor})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'MOD STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'MROUND',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'MROUND (${1:number}, ${2:multiple})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'MROUND STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'MULTINOMIAL',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'MULTINOMIAL (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'MULTINOMIAL STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'MUNIT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'MUNIT (${1:dimension})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'MUNIT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ODD',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ODD (${1:number:})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ODD STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'PI',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'PI ()',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'PI STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'POWER',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'POWER (${1:number}, ${2:power})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'POWER STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'PRODUCT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'PRODUCT (${1:number1}, ${2:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'PRODUCT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'QUOTIENT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'QUOTIENT (${1:numerator}, ${2:denominator})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'QUOTIENT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'RADIANS',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'RADIANS (${1:angle})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'RADIANS STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'RAND',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'RAND ()',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'RAND STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'RANDBETWEEN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'RANDBETWEEN (${1:bottom}, ${2:top})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'RANDBETWEEN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ROMAN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ROMAN (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ROMAN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ROUND',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ROUND (${1:number}, ${2:num_digits})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ROUND STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ROUNDDOWN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ROUNDDOWN (${1:number}, ${2:num_digits})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ROUNDDOWN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'ROUNDUP',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'ROUNDUP (${1:number}, ${2:num_digits})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'ROUNDUP STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SEC',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SEC (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SEC STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SECH',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SECH (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SECH STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SERIESSUM',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SERIESSUM (${1:x}, ${2:n}, ${3:m}, ${4:coefficients})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SERIESSUM STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SIGN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SIGN (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SIGN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SIN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SIN (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SIN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SINH',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SINH (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SINH STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SQRT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SQRT (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SQRT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SQRTPI',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SQRTPI (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SQRTPI STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SUBTOTAL',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SUBTOTAL (${1:function_num}, ${2:ref1})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SUBTOTAL STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SUM',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SUM ()',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SUM STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SUMIF',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SUMIF (${1:range}, ${2:criteria}, ${3:sum_range})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SUMIF STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SUMIFS',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SUMIFS ()',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SUMIFS STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SUMPRODUCT',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SUMPRODUCT ()',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SUMPRODUCT STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SUMSQ',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SUMSQ (${1:args})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SUMSQ STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SUMX2MY2',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SUMX2MY2 (${1:array_x}, ${2:array_y})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SUMX2MY2 STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SUMX2PY2',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SUMX2PY2 (${1:array_x}, ${2:array_y})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SUMX2PY2 STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'SUMXMY2',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'SUMXMY2 (${1:array_x}, ${2:array_y})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'SUMXMY2 STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'TAN',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'TAN (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'TAN STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'TANH',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'TANH (${1:number})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'TANH STATEMENT',
+                            range: range,
+                        },
+                        {
+                            label: 'TRUNC',
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: 'TRUNC (${1:number}, ${2:num_digits})',
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'TRUNC STATEMENT',
+                            range: range,
                         }
 
                     ];
@@ -1375,16 +3606,17 @@ function CustomEditor({ variables }) {
     }, [monaco]);
 
      return (
-        <>
+        <div style={{display: "flex", justifyContent: "space-around"}}>
          <Editor 
                     height="40vh" 
                     language="mySpecialLanguage" 
                     theme='myCoolTheme' 
                     value={value} 
                     onChange={(value) => setValue(value)} 
+                    width={"50%"}
                 />
                 <Evaluator keywords={variables} formulaProp={value}/>
-        </>
+        </div>
        
     );
     

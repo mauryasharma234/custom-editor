@@ -296,7 +296,6 @@ function App(){
   return (
     <>
      <CustomEditor variables={variables}/>
-      {/* <Evaluator keywords={variables}/> */}
     </>
    
   )
