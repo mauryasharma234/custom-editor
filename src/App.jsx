@@ -151,6 +151,7 @@
 
 import React, { useEffect } from 'react';
 import CustomEditor from './components/custom';
+import Evaluator from './components/evaluator';
 
 
 // import Editor, { useMonaco } from '@monaco-editor/react';
@@ -293,7 +294,11 @@ function App(){
   let variables = ['maurya', 'tanmay', 'class', 'new', 'arsh'];
   let functions = ['IF', 'DATEDIF']
   return (
-    <CustomEditor variables={variables}/>
+    <>
+     <CustomEditor variables={variables}/>
+      {/* <Evaluator keywords={variables}/> */}
+    </>
+   
   )
 }
 export default App;
