@@ -3631,6 +3631,9 @@ function CustomEditor({ variables }) {
                     value={value}
                     onChange={(value) => setValue(value)}
                     width={"100%"}
+                    options={{
+                        fontSize: 16,
+                      }}
                 />
             </div>
             <Evaluator keywords={variables} formulaProp={value} />
