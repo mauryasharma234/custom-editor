@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 
 import Editor, { useMonaco } from '@monaco-editor/react';
 import Evaluator from "./evaluator";
+import { Typography } from "antd";
 
 
 function CustomEditor({ variables }) {
@@ -9,7 +10,21 @@ function CustomEditor({ variables }) {
     const [value, setValue] = useState('');
 
     let functions = ['AND', 'FALSE', 'IF', 'IFERROR', 'IFNA', 'IFS', 'NOT', 'OR', 'SWITCH', 'TRUE', 'XOR', 'DATE', 'DATEDIF', 'DATEVALUE', 'DAY', 'DAYS', 'DAYS360', 'EDATE', 'EOMONTH', 'HOUR', 'ISOWEEKNUM', 'MINUTE', 'MONTH', 'NETWORKDAYS', 'NOW', 'SECOND', 'TIME', 'TIMEVALUE', 'TODAY', 'WEEKDAY', 'WEEKNUM', 'WORKDAY', 'YEAR', 'YEARFRAC', 'ASC', 'BAHTTEXT', 'CHAR', 'CLEAN', 'CODE', 'CONCATENATE', 'DBCS', 'DOLLAR', 'EXACT', 'FIND', 'FIXED', 'LEFT', 'LEN', 'LOWER', 'MID', 'NUMBERVALUE', 'PRONETIC', 'PROPER', 'REPLACE', 'REPT', 'RIGHT', 'SEARCH', 'SUBSTITUTE', 'T', 'TEXT', 'TEXTJOIN', 'TRIM', 'UPPER', 'VALUE',
-    'AVEDEV', 'AVERAGE', 'AVERAGEA', 'AVERAGEIF', 'AVERAGEIFS', 'CORREL', 'COUNT', 'COUNTA', 'COUNTBLANK', 'COUNTIF', 'COUNTIFS', 'DEVSQ', 'FISHER', 'FISHERINV', 'FORECAST', 'FREQUENCY', 'GAMMA', 'GAMMALN', 'GAUSS', 'GEOMEAN', 'GROWTH', 'HARMEAN', 'INTERCEPT', 'KURT', 'LARGE', 'LINEST', 'LOGEST', 'MAX', 'MAXA', 'MAXIFS', 'MEDIAN', 'MIN', 'MINA', 'MINIFS', 'PEARSON', 'PERMUT', 'PERMUTATIONA', 'PHI', 'PROB', 'ROW', 'RSQ', 'SKEW', 'SLOPE', 'SMALL', 'STANDARDIZE', 'STDEVA', 'STDEVPA', 'STEYX', 'TREND', 'TRIMMEAN', 'VARA', 'VARPA', 'ABS', 'ACOS', 'ACOSH', 'ACOT', 'ACOTH', 'AGGREGATE', 'ARABIC', 'ASIN', 'ASINH', 'ATAN', 'ATAN2', 'ATANH', 'BASE', 'CEILING', 'COMBIN', 'COMBINA', 'COS', 'COSH', 'COT', 'COTH', 'CSC', 'CSCH', 'DECIMAL', 'DEGREES', 'EVEN', 'EXP', 'FACT', 'FACTDOUBLE', 'FLOOR', 'GCD', 'INT', 'LCM', 'LN', 'LOG', 'LOG10', 'MMULT', 'MOD', 'MROUND', 'MULTINOMIAL', 'MUNIT', 'ODD', 'PI', 'POWER', 'PRODUCT', 'QUOTIENT', 'RADIANS', 'RAND', 'RANDBETWEEN', 'ROMAN', 'ROUND', 'ROUNDDOWN', 'ROUNDUP', 'SEC', 'SECH', 'SERIESSUM', 'SIGN', 'SIN', 'SINH', 'SQRT', 'SQRTPI', 'SUBTOTAL', 'SUM', 'SUMIF', 'SUMIFS', 'SUMPRODUCT', 'SUMSQ', 'SUMX2MY2', 'SUMX2PY2', 'SUMXMY2', 'TAN', 'TANH', 'TRUNC'];
+        'AVEDEV', 'AVERAGE', 'AVERAGEA', 'AVERAGEIF', 'AVERAGEIFS',
+        'CORREL', 'COUNT', 'COUNTA', 'COUNTBLANK', 'COUNTIF', 'COUNTIFS',
+        'DEVSQ', 'FISHER', 'FISHERINV', 'FORECAST', 'FREQUENCY', 'GAMMA', 'GAMMALN',
+        'GAUSS', 'GEOMEAN', 'GROWTH', 'HARMEAN', 'INTERCEPT', 'KURT', 'LARGE', 'LINEST',
+        'LOGEST', 'MAX', 'MAXA', 'MAXIFS', 'MEDIAN', 'MIN', 'MINA', 'MINIFS', 'PEARSON',
+        'PERMUT', 'PERMUTATIONA', 'PHI', 'PROB', 'ROW', 'RSQ', 'SKEW', 'SLOPE', 'SMALL',
+        'STANDARDIZE', 'STDEVA', 'STDEVPA', 'STEYX', 'TREND', 'TRIMMEAN', 'VARA', 'VARPA',
+        'ABS', 'ACOS', 'ACOSH', 'ACOT', 'ACOTH', 'AGGREGATE', 'ARABIC', 'ASIN', 'ASINH', 'ATAN',
+        'ATAN2', 'ATANH', 'BASE', 'CEILING', 'COMBIN', 'COMBINA', 'COS', 'COSH', 'COT', 'COTH', 'CSC',
+        'CSCH', 'DECIMAL', 'DEGREES', 'EVEN', 'EXP', 'FACT', 'FACTDOUBLE', 'FLOOR', 'GCD', 'INT', 'LCM',
+        'LN', 'LOG', 'LOG10', 'MMULT', 'MOD', 'MROUND', 'MULTINOMIAL', 'MUNIT', 'ODD', 'PI', 'POWER',
+        'PRODUCT', 'QUOTIENT', 'RADIANS', 'RAND', 'RANDBETWEEN', 'ROMAN', 'ROUND', 'ROUNDDOWN', 'ROUNDUP',
+        'SEC', 'SECH', 'SERIESSUM', 'SIGN', 'SIN', 'SINH', 'SQRT', 'SQRTPI', 'SUBTOTAL', 'SUM', 'SUMIF', 'SUMIFS',
+        'SUMPRODUCT', 'SUMSQ', 'SUMX2MY2', 'SUMX2PY2', 'SUMXMY2', 'TAN', 'TANH', 'TRUNC'];
+
     useEffect(() => {
         // do conditional chaining
         console.log("value", value);
@@ -478,7 +493,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "BAHTTEXT") {
                         return {
                             contents: [
@@ -488,7 +503,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "CHAR") {
                         return {
                             contents: [
@@ -498,7 +513,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "CLEAN") {
                         return {
                             contents: [
@@ -508,7 +523,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "CODE") {
                         return {
                             contents: [
@@ -518,7 +533,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "CONCATENATE") {
                         return {
                             contents: [
@@ -528,7 +543,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "DBCS") {
                         return {
                             contents: [
@@ -538,7 +553,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "DOLLAR") {
                         return {
                             contents: [
@@ -548,7 +563,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "EXACT") {
                         return {
                             contents: [
@@ -558,7 +573,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "FIND") {
                         return {
                             contents: [
@@ -568,7 +583,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "FIXED") {
                         return {
                             contents: [
@@ -578,7 +593,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "LEFT") {
                         return {
                             contents: [
@@ -588,7 +603,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "LEN") {
                         return {
                             contents: [
@@ -598,7 +613,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "LOWER") {
                         return {
                             contents: [
@@ -608,7 +623,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MID") {
                         return {
                             contents: [
@@ -618,7 +633,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "NUMBERVALUE") {
                         return {
                             contents: [
@@ -628,7 +643,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "PRONETIC") {
                         return {
                             contents: [
@@ -638,7 +653,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "PROPER") {
                         return {
                             contents: [
@@ -648,7 +663,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "REPLACE") {
                         return {
                             contents: [
@@ -658,7 +673,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "REPT") {
                         return {
                             contents: [
@@ -668,7 +683,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "RIGHT") {
                         return {
                             contents: [
@@ -678,7 +693,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SEARCH") {
                         return {
                             contents: [
@@ -688,7 +703,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SUBSTITUTE") {
                         return {
                             contents: [
@@ -698,7 +713,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "T") {
                         return {
                             contents: [
@@ -708,7 +723,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "TEXT") {
                         return {
                             contents: [
@@ -718,7 +733,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "TEXTJOIN") {
                         return {
                             contents: [
@@ -728,7 +743,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "TRIM") {
                         return {
                             contents: [
@@ -738,7 +753,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "UPPER") {
                         return {
                             contents: [
@@ -748,7 +763,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "VALUE") {
                         return {
                             contents: [
@@ -767,7 +782,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "AVERAGE") {
                         return {
                             contents: [
@@ -777,7 +792,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "AVERAGEA") {
                         return {
                             contents: [
@@ -787,7 +802,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "AVERAGEIF") {
                         return {
                             contents: [
@@ -797,7 +812,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "AVERAGEIFS") {
                         return {
                             contents: [
@@ -807,7 +822,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "CORREL") {
                         return {
                             contents: [
@@ -817,7 +832,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "COUNT") {
                         return {
                             contents: [
@@ -827,7 +842,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "COUNTA") {
                         return {
                             contents: [
@@ -837,7 +852,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "COUNTBLANK") {
                         return {
                             contents: [
@@ -847,7 +862,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "COUNTIF") {
                         return {
                             contents: [
@@ -857,7 +872,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "COUNTIFS") {
                         return {
                             contents: [
@@ -867,7 +882,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "DEVSQ") {
                         return {
                             contents: [
@@ -877,7 +892,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "FISHER") {
                         return {
                             contents: [
@@ -887,7 +902,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "FISHERINV") {
                         return {
                             contents: [
@@ -897,7 +912,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "FORECAST") {
                         return {
                             contents: [
@@ -907,7 +922,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "FREQUENCY") {
                         return {
                             contents: [
@@ -917,7 +932,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "GAMMA") {
                         return {
                             contents: [
@@ -927,7 +942,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "GAMMALN") {
                         return {
                             contents: [
@@ -937,7 +952,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "GAUSS") {
                         return {
                             contents: [
@@ -947,7 +962,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "GEOMEAN") {
                         return {
                             contents: [
@@ -957,7 +972,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "GROWTH") {
                         return {
                             contents: [
@@ -967,7 +982,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "HARMEAN") {
                         return {
                             contents: [
@@ -977,7 +992,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "INTERCEPT") {
                         return {
                             contents: [
@@ -987,7 +1002,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "KURT") {
                         return {
                             contents: [
@@ -997,7 +1012,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "LARGE") {
                         return {
                             contents: [
@@ -1007,7 +1022,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "LINEST") {
                         return {
                             contents: [
@@ -1017,7 +1032,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "LOGEST") {
                         return {
                             contents: [
@@ -1027,7 +1042,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MAX") {
                         return {
                             contents: [
@@ -1037,7 +1052,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MAXA") {
                         return {
                             contents: [
@@ -1047,7 +1062,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MAXIFS") {
                         return {
                             contents: [
@@ -1057,7 +1072,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MEDIAN") {
                         return {
                             contents: [
@@ -1067,7 +1082,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MIN") {
                         return {
                             contents: [
@@ -1077,7 +1092,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MINA") {
                         return {
                             contents: [
@@ -1087,7 +1102,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MINIFS") {
                         return {
                             contents: [
@@ -1097,7 +1112,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "PEARSON") {
                         return {
                             contents: [
@@ -1107,7 +1122,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "PERMUT") {
                         return {
                             contents: [
@@ -1117,7 +1132,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "PERMUTATIONA") {
                         return {
                             contents: [
@@ -1127,7 +1142,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "PHI") {
                         return {
                             contents: [
@@ -1137,7 +1152,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "PROB") {
                         return {
                             contents: [
@@ -1147,7 +1162,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ROW") {
                         return {
                             contents: [
@@ -1157,7 +1172,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "RSQ") {
                         return {
                             contents: [
@@ -1167,7 +1182,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SKEW") {
                         return {
                             contents: [
@@ -1177,7 +1192,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SLOPE") {
                         return {
                             contents: [
@@ -1187,7 +1202,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SMALL") {
                         return {
                             contents: [
@@ -1197,7 +1212,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "STANDARDIZE") {
                         return {
                             contents: [
@@ -1207,7 +1222,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "STDEVA") {
                         return {
                             contents: [
@@ -1217,7 +1232,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "STDEVPA") {
                         return {
                             contents: [
@@ -1227,7 +1242,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "STEYX") {
                         return {
                             contents: [
@@ -1237,7 +1252,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "TREND") {
                         return {
                             contents: [
@@ -1247,7 +1262,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "TRIMMEAN") {
                         return {
                             contents: [
@@ -1257,7 +1272,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "VARA") {
                         return {
                             contents: [
@@ -1267,7 +1282,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "VARPA") {
                         return {
                             contents: [
@@ -1286,7 +1301,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ACOS") {
                         return {
                             contents: [
@@ -1296,7 +1311,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ACOSH") {
                         return {
                             contents: [
@@ -1306,7 +1321,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ACOT") {
                         return {
                             contents: [
@@ -1316,7 +1331,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ACOTH") {
                         return {
                             contents: [
@@ -1326,7 +1341,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "AGGREGATE") {
                         return {
                             contents: [
@@ -1336,7 +1351,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ARABIC") {
                         return {
                             contents: [
@@ -1346,7 +1361,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ASIN") {
                         return {
                             contents: [
@@ -1356,7 +1371,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ASINH") {
                         return {
                             contents: [
@@ -1366,7 +1381,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ATAN") {
                         return {
                             contents: [
@@ -1376,7 +1391,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ATAN2") {
                         return {
                             contents: [
@@ -1386,7 +1401,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ATANH") {
                         return {
                             contents: [
@@ -1396,7 +1411,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "BASE") {
                         return {
                             contents: [
@@ -1406,7 +1421,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "CEILING") {
                         return {
                             contents: [
@@ -1416,7 +1431,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "COMBIN") {
                         return {
                             contents: [
@@ -1426,7 +1441,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "COMBINA") {
                         return {
                             contents: [
@@ -1436,7 +1451,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "COS") {
                         return {
                             contents: [
@@ -1446,7 +1461,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "COSH") {
                         return {
                             contents: [
@@ -1456,7 +1471,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "COT") {
                         return {
                             contents: [
@@ -1466,7 +1481,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "COTH") {
                         return {
                             contents: [
@@ -1476,7 +1491,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "CSC") {
                         return {
                             contents: [
@@ -1486,7 +1501,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "CSCH") {
                         return {
                             contents: [
@@ -1496,7 +1511,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "DECIMAL") {
                         return {
                             contents: [
@@ -1506,7 +1521,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "DEGREES") {
                         return {
                             contents: [
@@ -1516,7 +1531,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "EVEN") {
                         return {
                             contents: [
@@ -1526,7 +1541,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "EXP") {
                         return {
                             contents: [
@@ -1536,7 +1551,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "FACT") {
                         return {
                             contents: [
@@ -1546,7 +1561,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "FACTDOUBLE") {
                         return {
                             contents: [
@@ -1556,7 +1571,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "FLOOR") {
                         return {
                             contents: [
@@ -1566,7 +1581,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "GCD") {
                         return {
                             contents: [
@@ -1576,7 +1591,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "INT") {
                         return {
                             contents: [
@@ -1586,7 +1601,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "LCM") {
                         return {
                             contents: [
@@ -1596,7 +1611,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "LN") {
                         return {
                             contents: [
@@ -1606,7 +1621,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "LOG") {
                         return {
                             contents: [
@@ -1616,7 +1631,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "LOG10") {
                         return {
                             contents: [
@@ -1626,7 +1641,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MMULT") {
                         return {
                             contents: [
@@ -1636,7 +1651,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MOD") {
                         return {
                             contents: [
@@ -1646,7 +1661,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MROUND") {
                         return {
                             contents: [
@@ -1656,7 +1671,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MULTINOMIAL") {
                         return {
                             contents: [
@@ -1666,7 +1681,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "MUNIT") {
                         return {
                             contents: [
@@ -1676,7 +1691,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ODD") {
                         return {
                             contents: [
@@ -1686,7 +1701,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "PI") {
                         return {
                             contents: [
@@ -1696,7 +1711,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "POWER") {
                         return {
                             contents: [
@@ -1706,7 +1721,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "PRODUCT") {
                         return {
                             contents: [
@@ -1716,7 +1731,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "QUOTIENT") {
                         return {
                             contents: [
@@ -1726,7 +1741,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "RADIANS") {
                         return {
                             contents: [
@@ -1736,7 +1751,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "RAND") {
                         return {
                             contents: [
@@ -1746,7 +1761,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "RANDBETWEEN") {
                         return {
                             contents: [
@@ -1756,7 +1771,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ROMAN") {
                         return {
                             contents: [
@@ -1766,7 +1781,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ROUND") {
                         return {
                             contents: [
@@ -1776,7 +1791,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ROUNDDOWN") {
                         return {
                             contents: [
@@ -1786,7 +1801,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "ROUNDUP") {
                         return {
                             contents: [
@@ -1796,7 +1811,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SEC") {
                         return {
                             contents: [
@@ -1806,7 +1821,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SECH") {
                         return {
                             contents: [
@@ -1816,7 +1831,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SERIESSUM") {
                         return {
                             contents: [
@@ -1826,7 +1841,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SIGN") {
                         return {
                             contents: [
@@ -1836,7 +1851,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SIN") {
                         return {
                             contents: [
@@ -1846,7 +1861,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SINH") {
                         return {
                             contents: [
@@ -1856,7 +1871,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SQRT") {
                         return {
                             contents: [
@@ -1866,7 +1881,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SQRTPI") {
                         return {
                             contents: [
@@ -1876,7 +1891,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SUBTOTAL") {
                         return {
                             contents: [
@@ -1886,7 +1901,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SUM") {
                         return {
                             contents: [
@@ -1896,7 +1911,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SUMIF") {
                         return {
                             contents: [
@@ -1906,7 +1921,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SUMIFS") {
                         return {
                             contents: [
@@ -1916,7 +1931,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SUMPRODUCT") {
                         return {
                             contents: [
@@ -1926,7 +1941,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SUMSQ") {
                         return {
                             contents: [
@@ -1936,7 +1951,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SUMX2MY2") {
                         return {
                             contents: [
@@ -1946,7 +1961,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SUMX2PY2") {
                         return {
                             contents: [
@@ -1956,7 +1971,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "SUMXMY2") {
                         return {
                             contents: [
@@ -1966,7 +1981,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "TAN") {
                         return {
                             contents: [
@@ -1976,7 +1991,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "TANH") {
                         return {
                             contents: [
@@ -1986,7 +2001,7 @@ function CustomEditor({ variables }) {
                             ]
                         }
                     }
-                    
+
                     if (word && word.word == "TRUNC") {
                         return {
                             contents: [
@@ -3548,11 +3563,11 @@ function CustomEditor({ variables }) {
                     return { suggestions: suggestions };
                 },
             });
-            
+
             const validateModel = (model) => {
                 const markers = [];
                 const keywords = variables + functions;
-    
+
                 for (let i = 1; i < model.getLineCount() + 1; i++) {
                     const range = {
                         startLineNumber: i,
@@ -3562,19 +3577,19 @@ function CustomEditor({ variables }) {
                     };
                     const content = model.getValueInRange(range).trim();
                     const words = content.split(/\s+/);
-    
+
                     words.forEach((word, index) => {
                         const wordStartColumn = range.startColumn + content.indexOf(word);
                         const wordEndColumn = wordStartColumn + word.length;
-    
-                        if (!word.startsWith('"') && 
-                            !word.endsWith('"')  && 
-                            !isMathOperator(word) && 
-                            !word.startsWith('$') && 
-                            !word.startsWith('($') && 
-                            !word.startsWith('("') && 
+
+                        if (!word.startsWith('"') &&
+                            !word.endsWith('"') &&
+                            !isMathOperator(word) &&
+                            !word.startsWith('$') &&
+                            !word.startsWith('($') &&
+                            !word.startsWith('("') &&
                             !word.endsWith('),') &&
-                            !word.startsWith('(')&&
+                            !word.startsWith('(') &&
                             !keywords.includes(word)
                         ) {
                             markers.push({
@@ -3588,12 +3603,12 @@ function CustomEditor({ variables }) {
                         }
                     });
                 }
-    
+
                 monaco.editor.setModelMarkers(model, "owner", markers);
-    
+
             }
-    
-             // Get the model for the editor
+
+            // Get the model for the editor
             const model = monaco.editor.getModels()[0];
 
             // Validate model content initially and on change
@@ -3601,25 +3616,29 @@ function CustomEditor({ variables }) {
             model.onDidChangeContent(() => {
                 validateModel(model);
             });
-           
+
         }
     }, [monaco]);
 
-     return (
-        <div style={{display: "flex", justifyContent: "space-around"}}>
-         <Editor 
-                    height="40vh" 
-                    language="mySpecialLanguage" 
-                    theme='myCoolTheme' 
-                    value={value} 
-                    onChange={(value) => setValue(value)} 
-                    width={"50%"}
+    return (
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
+            <div style={{ width: "60%", marginRight: "1rem" }}>
+                <Typography.Title level={3} style={{ marginBottom: "1rem" }}>Make Your Rule</Typography.Title>
+                <Editor
+                    height="40vh"
+                    language="mySpecialLanguage"
+                    theme='myCoolTheme'
+                    value={value}
+                    onChange={(value) => setValue(value)}
+                    width={"100%"}
                 />
-                <Evaluator keywords={variables} formulaProp={value}/>
+            </div>
+            <Evaluator keywords={variables} formulaProp={value} />
         </div>
-       
     );
     
+    
+
 }
 
 export default CustomEditor;

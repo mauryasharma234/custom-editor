@@ -189,6 +189,8 @@ import { TAN } from '@formulajs/formulajs';
 import { TANH } from '@formulajs/formulajs';
 import { TRUNC } from '@formulajs/formulajs';
 
+import { Button, Typography, Checkbox, Form, Input } from 'antd';
+// import { Button, Checkbox, Form, Input } from 'antd';
 
 
 
@@ -197,7 +199,7 @@ import { TRUNC } from '@formulajs/formulajs';
 
 export default function Evaluator({ keywords, formulaProp }) {
     // State to store the values of keyword inputs
-    console.log("getting the formula",formulaProp)
+    console.log("getting the formula", formulaProp)
     const [keywordValues, setKeywordValues] = useState({});
     const [result, setResult] = useState();
 
@@ -226,46 +228,66 @@ export default function Evaluator({ keywords, formulaProp }) {
     // Function to evaluate the formula
     const evaluateFormula = () => {
         // Replace keyword placeholders with their values in the formula
-        
+
         const updatedFormula = replaceKeywordsInFormula();
 
         // Evaluate the updated formula
         // You can implement your own evaluation logic here
-        
+
         // console.log('Updated Formula:', updatedFormula);
+        console.log("after updateing", updatedFormula)
         console.log(eval(updatedFormula));
         setResult(eval(updatedFormula));
         // return eval(updatedFormula);
-       
+
     };
 
     return (
         <div>
-            <h1>Enter values for the fields</h1>
+            {/* <h1>Enter values for the fields</h1> */}
+            <Typography.Title level={3}>Enter values for the fields</Typography.Title>
             {/* Input for entering the formula */}
-
             {keywords.map(keyword => (
                 <div key={keyword}>
                     {/* Display keyword label */}
-                    <label style = {{marginRight: "5px"}}htmlFor={keyword}>{keyword}:</label>
+                    {/* <label style = {{marginRight: "5px"}}htmlFor={keyword}>{keyword}:</label> */}
                     {/* Input for keyword value */}
-                    <input
+                    {/* <input
                         type="text"
                         id={keyword}
                         value={keywordValues[keyword] || ''}
                         onChange={(e) => handleKeywordValueChange(keyword, e.target.value)}
                         style={{marginBottom: '10px'}}
-                    />
+                    /> */}
+                    <Form.Item
+                        label={keyword}
+                        name={keyword}
+                        // rules={[
+                        //     {
+                        //         required: true,
+                        //         message: 'Please input your username!',
+                        //     },
+                        // ]}
+                    >
+                        <Input 
+                            id = {keyword}
+                            value = {keywordValues[keyword] || ''}
+                            onChange={(e) => handleKeywordValueChange(keyword, e.target.value)}
+                            type='text'
+                        />
+                    </Form.Item>
                 </div>
             ))}
             {/* Button to evaluate the formula */}
-            <button style = {{marginTop: '10px'}} onClick={evaluateFormula} >Evaluate Formula</button>
-            <div style={{marginTop: '2px'}}> 
-                Result : {result}
+            {/* <button style = {{marginTop: '10px'}} onClick={evaluateFormula} >Evaluate Formula</button> */}
+            <Button onClick={evaluateFormula} type='primary'>Evaluate Rule</Button>
+            <div style={{ marginTop: '20px' }}>
+                {result !== undefined ? (
+                    <Typography.Title level={4}>Result: {result}</Typography.Title>
+                ) : null}
             </div>
-                
-            
+
         </div>
-        
+
     );
 }

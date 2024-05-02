@@ -291,7 +291,7 @@ import Evaluator from './components/evaluator';
 // }
 
 function App(){
-  let variables = ['maurya', 'tanmay', 'class', 'new', 'arsh'];
+  let variables = ['DURATION_IN_DAYS', "TRIP_TYPE"];
   let functions = ['IF', 'DATEDIF']
   return (
     <>
