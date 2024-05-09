@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Form, Input, Button, Select, Typography } from 'antd';
+const { Option } = Select;
 import * as formulajs from '@formulajs/formulajs' // import entire package
 
 import { DATE } from '@formulajs/formulajs';
@@ -189,12 +191,6 @@ import { TAN } from '@formulajs/formulajs';
 import { TANH } from '@formulajs/formulajs';
 import { TRUNC } from '@formulajs/formulajs';
 
-import { Button, Typography, Checkbox, Form, Input } from 'antd';
-// import { Button, Checkbox, Form, Input } from 'antd';
-
-
-
-
 
 
 export default function Evaluator({ keywords, formulaProp }) {
@@ -210,6 +206,9 @@ export default function Evaluator({ keywords, formulaProp }) {
             [keyword]: value
         }));
     };
+    useEffect(() => {
+        console.log("Keywords", keywordValues)
+    }, [keywordValues])
 
     // Function to handle changes in the formula input
 
@@ -220,6 +219,10 @@ export default function Evaluator({ keywords, formulaProp }) {
         // Replace each keyword placeholder with its value
         Object.entries(keywordValues).forEach(([keyword, value]) => {
             const regex = new RegExp(`\\$${keyword}`, 'g');
+            console.log("field type for ", keyword, keywordValues[`${keyword}_fieldType`]   )
+            if(keywordValues[`${keyword}_fieldType`] === "string" || keywordValues[`${keyword}_fieldType`] === undefined){
+                value = `"${value}"`
+            }
             updatedFormula = updatedFormula.replace(regex, value);
         });
         return updatedFormula;
@@ -241,6 +244,13 @@ export default function Evaluator({ keywords, formulaProp }) {
         // return eval(updatedFormula);
 
     };
+    const handleFieldTypeChange = (keyword, fieldType) => {
+        setKeywordValues(prevState => ({
+            ...prevState,
+            // [keyword]: '',
+            [`${keyword}_fieldType`]: fieldType ? fieldType : 'string'
+        }));
+    };
 
     return (
         <div>
@@ -248,26 +258,10 @@ export default function Evaluator({ keywords, formulaProp }) {
             <Typography.Title level={3}>Enter values for the fields</Typography.Title>
             {/* Input for entering the formula */}
             {keywords.map(keyword => (
-                <div key={keyword}>
-                    {/* Display keyword label */}
-                    {/* <label style = {{marginRight: "5px"}}htmlFor={keyword}>{keyword}:</label> */}
-                    {/* Input for keyword value */}
-                    {/* <input
-                        type="text"
-                        id={keyword}
-                        value={keywordValues[keyword] || ''}
-                        onChange={(e) => handleKeywordValueChange(keyword, e.target.value)}
-                        style={{marginBottom: '10px'}}
-                    /> */}
+                <div key={keyword} style={{display: "flex", gap: "8px"}}>
                     <Form.Item
                         label={keyword}
                         name={keyword}
-                        // rules={[
-                        //     {
-                        //         required: true,
-                        //         message: 'Please input your username!',
-                        //     },
-                        // ]}
                     >
                         <Input 
                             id = {keyword}
@@ -275,6 +269,16 @@ export default function Evaluator({ keywords, formulaProp }) {
                             onChange={(e) => handleKeywordValueChange(keyword, e.target.value)}
                             type='text'
                         />
+                    </Form.Item>
+                    <Form.Item>
+                        <Select
+                            defaultValue="string"
+                            onChange={(value) => handleFieldTypeChange(keyword, value)}
+                        >
+                            <Option value="string">String</Option>
+                            <Option value="number">Number</Option>
+                            <Option value="date">Date</Option>
+                        </Select>
                     </Form.Item>
                 </div>
             ))}
