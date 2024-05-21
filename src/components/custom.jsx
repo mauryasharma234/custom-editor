@@ -3568,7 +3568,7 @@ function CustomEditor({ variables }) {
                 const markers = [];
                 const keywords = variables + functions;
 
-                for (let i = 1; i < model.getLineCount() + 1; i++) {
+                for (let i = 1; i < model?.getLineCount() + 1; i++) {
                     const range = {
                         startLineNumber: i,
                         startColumn: 1,
@@ -3613,7 +3613,7 @@ function CustomEditor({ variables }) {
 
             // Validate model content initially and on change
             validateModel(model);
-            model.onDidChangeContent(() => {
+            model?.onDidChangeContent(() => {
                 validateModel(model);
             });
 
