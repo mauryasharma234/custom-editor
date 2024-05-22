@@ -30,11 +30,6 @@ function MyLayout() {
         }}
         collapsible
         breakpoint="md"
-        // onCollapse={() => {
-        //   logoTitleDisplay === 'inline'
-        //     ? setLogoTitleDisplay('none')
-        //     : setLogoTitleDisplay('inline');
-        // }}
         width={220}
       >
         <div
@@ -46,20 +41,13 @@ function MyLayout() {
             marginTop: '23px',
           }}
         >
-          {/* <Image
-            preview={false}
-            // src={darkMode ? '/logo.png' : '/dark.png'}
-            width={28}
-            height={28}
-          /> */}
-          <Typography.Title
+         <Typography.Title
             style={{
-                color: "white",
-              fontWeight: 400,
-              marginBottom: 0,
+              color: "white",
+              margin: "auto",
+              height: 40,
             }}
-            level={4}
-          >
+            level={2}>
             Ensolver
           </Typography.Title>
         </div>
@@ -73,7 +61,6 @@ function MyLayout() {
           }}
           theme="dark"
           mode="inline"
-        //   selectedKeys={[selectedPage]}
           items={menuItems}
           onClick={(item) => navigate(item.key)}
         />
@@ -93,7 +80,6 @@ function MyLayout() {
 
         <Content
           style={{
-            // backgroundColor: colorBgContainer,
             margin: '24px 16px 0',
             minHeight: '87vh',
             overflowX: 'scroll',

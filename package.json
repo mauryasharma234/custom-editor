@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.7",
     "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.11.4",
     "@formulajs/formulajs": "^4.4.4",

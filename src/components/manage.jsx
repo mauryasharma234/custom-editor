@@ -2,16 +2,20 @@ import { useState } from "react"
 import axios from 'axios';
 import useSWR from "swr"
 import {css} from "@emotion/react";
-import { Button, Col, Input, Row, Space, Table, Typography } from "antd";
+import { Button, Col, Input, Popconfirm, Row, Space, Table, Tooltip, Typography } from "antd";
 import { render } from "react-dom";
+import { useNavigate } from "react-router-dom";
+import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
+
 
 const fetcher = (url) => {
     return axios
-      .get("http://localhost:3000" + url)
+      .get(import.meta.env.VITE_BACKEND_URL + url)
       .then((res) => res.data);
   };
 
 export default function Manage(){
+    const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState("");
     
@@ -48,7 +52,68 @@ export default function Manage(){
               return <>{new Date(item.updatedAt).toLocaleDateString()}</>;
             },
             title: 'Updated At',
-        }
+        },
+        {
+            title: "Action",
+            key: "action",
+            render: (_, record) => {
+              console.log("record === ", record);
+              return (
+                <Space size="middle">
+                  <Tooltip placement="top" title="View">
+                    <a
+                      onClick={() => {
+                        props.setShowVisibleState({
+                          showType: "create",
+                          type: "view",
+                          showData: {
+                            id: record.id,
+                          },
+                        });
+                      }}>
+                      {/* View */}
+                      <EyeOutlined />
+                    </a>
+                  </Tooltip>
+                  <Tooltip placement="top" title="Edit">
+                    <a
+                      onClick={() => {
+                        props.setShowVisibleState({
+                          showType: "create",
+                          type: "edit",
+                          showData: {
+                            id: record.id,
+                          },
+                        });
+                      }}>
+                      {/* Edit */}
+                      <EditOutlined />
+                    </a>
+                  </Tooltip>
+                  <Tooltip placement="top" title="Delete">
+                    <Popconfirm
+                      title="Delete Rule"
+                      description="Are you sure you want to delete this rule?"
+                      onConfirm={async () => {
+                        try {
+                          await axios.delete(
+                            (import.meta.env.VITE_BACKEND_URL) +
+                            `/api/v1/test/deleteFormula?id=${record.id}`,
+                          );
+      
+                          setIsDeleted((val) => !val);
+                        } catch (err) { }
+                      }}
+                      okText="Yes"
+                      cancelText="No">
+                      {/* <a>Delete</a> */}
+                      <a><DeleteOutlined /></a>
+                    </Popconfirm>
+                  </Tooltip>
+                </Space>
+              );
+            },
+          },
     ]
     
     return (
@@ -75,6 +140,9 @@ export default function Manage(){
                  size="middle"
                  css={{
                     float: 'right',
+                 }}
+                 onClick={() => {
+                    navigate('/new');
                  }}
                 >
                     Create New Formula
