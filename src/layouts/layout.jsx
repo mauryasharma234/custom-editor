@@ -21,11 +21,11 @@ function MyLayout() {
     return (
      <Layout style={{ minHeight: '100vh' }} hasSider> 
      <Sider
-        style={{ backgroundColor: "yellow" }}
+        style={{ backgroundColor: "" }}
         css={{
           '& .ant-layout-sider-trigger': {
             color: "red",
-            backgroundColor: "blue",
+            backgroundColor: "",
           },
         }}
         collapsible
@@ -46,16 +46,15 @@ function MyLayout() {
             marginTop: '23px',
           }}
         >
-          <Image
+          {/* <Image
             preview={false}
             // src={darkMode ? '/logo.png' : '/dark.png'}
             width={28}
             height={28}
-          />
+          /> */}
           <Typography.Title
             style={{
-            //   color: darkMode ? 'white' : 'black',
-            //   display: logoTitleDisplay,
+                color: "white",
               fontWeight: 400,
               marginBottom: 0,
             }}
@@ -72,7 +71,7 @@ function MyLayout() {
               width: '100%',
             },
           }}
-          // theme="dark"
+          theme="dark"
           mode="inline"
         //   selectedKeys={[selectedPage]}
           items={menuItems}
@@ -87,7 +86,7 @@ function MyLayout() {
             flexWrap: 'wrap',
             justifyContent: 'right',
             paddingInline: '5%',
-            background: "red",
+            background: "",
           }}
         >
         </Header>
