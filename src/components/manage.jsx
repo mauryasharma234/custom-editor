@@ -131,13 +131,13 @@ export default function Manage(){
                 <Input.Search
                     placeholder="Search"
                     onSearch={(value) => setSearch(value)}
-                    size="middle"
+                    size="large"
                 />
               </Col>
               <Col flex="none">
                 <Button
                  type="primary"
-                 size="middle"
+                 size="large"
                  css={{
                     float: 'right',
                  }}
