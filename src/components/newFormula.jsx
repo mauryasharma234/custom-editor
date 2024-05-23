@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Button, Col, Form, Input, Popconfirm, Row, Select, Table } from 'antd';
+import { App, Button, Col, Form, Input, Popconfirm, Row, Select, Table } from 'antd';
 import './index.css';
 import useSWR from 'swr';
 import { fetcher } from '../fetchers';
 import { DeleteOutlined } from '@ant-design/icons';
+import CustomTag from './tag';
 
 const EditableContext = React.createContext(null);
 
@@ -95,6 +96,7 @@ const NewFormula = () => {
 
   const [dataSource, setDataSource] = useState([]);
   const [count, setCount] = useState(1);
+  const [tags, setTags] = useState([]);
 
   const {data: clientNames, isLoading: isClientNamesLoading} = useSWR(`/api/v1/test/getClientNames`, fetcher)
     const [existingClientNames, setExistingClientNames] = useState([]);
@@ -132,6 +134,11 @@ const NewFormula = () => {
     });
     setDataSource(newData);
     form.setFieldsValue({ tableData: newData });
+  };
+
+  const handleTagsChange = (newTags) => {
+    setTags(newTags);
+    form.setFieldsValue({ variables: newTags });
   };
 
   const onFinish = (values) => {
@@ -206,7 +213,7 @@ const NewFormula = () => {
           </Col>
        
         <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
-        <Form.Item label="Metadata" name="metaData">
+        <Form.Item label="Metadata" name="tableData">
           <Button
             onClick={handleAdd}
             type='primary'
@@ -225,26 +232,16 @@ const NewFormula = () => {
           />
         </Form.Item>
         </Col>
-
-        <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
+          <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
             <Form.Item
               label={'Variables'}
               name={'variables'}
               rules={[{ message: `Please input variables`, required: true }]}
             >
-              <Select
-                mode="tags"
-                placeholder="Select or add client name"
-                allowClear
-                style={{ width: '100%' }}
-                options={existingClientNames.map((clientName) => ({
-                  key: clientName,
-                  value: clientName,
-                  label: clientName,
-                }))}
-              />
+              <CustomTag tags={tags} setTags={handleTagsChange} />
             </Form.Item>
           </Col>
+          
         <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
           <Form.Item>
             <Button type="primary" htmlType="submit">Submit</Button>
