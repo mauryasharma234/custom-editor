@@ -3605,7 +3605,7 @@ function CustomEditor({ variables }) {
     return (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
             <div style={{ width: "60%", marginRight: "1rem" }}>
-                <Typography.Title level={3} style={{ marginBottom: "1rem" }}>Make Your Rule</Typography.Title>
+                <Typography.Title level={3} style={{ marginBottom: "1rem" }}>Make Your Formula</Typography.Title>
                 <Editor
                     height="40vh"
                     language="mySpecialLanguage"
@@ -3615,6 +3615,9 @@ function CustomEditor({ variables }) {
                     width={"100%"}
                     options={{
                         fontSize: 16,
+                        minimap: {
+                            enabled: false,
+                          },
                       }}
                 />
             </div>
