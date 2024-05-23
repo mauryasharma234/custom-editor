@@ -6,13 +6,8 @@ import { Button, Col, Input, Popconfirm, Row, Space, Table, Tooltip, Typography 
 import { render } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
+import { fetcher } from "../fetchers";
 
-
-const fetcher = (url) => {
-    return axios
-      .get(import.meta.env.VITE_BACKEND_URL + url)
-      .then((res) => res.data);
-  };
 
 export default function Manage(){
     const navigate = useNavigate();
