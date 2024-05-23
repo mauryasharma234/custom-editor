@@ -3538,7 +3538,6 @@ function CustomEditor({ variables }) {
 
                     ];
                     for (var i = 0; i < variables.length; i++) {
-                        console.log("now pushing", variables[i]);
                         suggestions.push({ label: "$" + variables[i], kind: monaco.languages.CompletionItemKind.Text, insertText: "$" + variables[i], range: range })
                     }
 
@@ -3603,7 +3602,7 @@ function CustomEditor({ variables }) {
     }, [monaco, variables]);
 
     return (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", marginBottom: "10px"}}>
             <div style={{ width: "60%", marginRight: "1rem" }}>
                 <Typography.Title level={3} style={{ marginBottom: "1rem" }}>Make Your Formula</Typography.Title>
                 <Editor
@@ -3618,6 +3617,7 @@ function CustomEditor({ variables }) {
                         minimap: {
                             enabled: false,
                           },
+                          lineNumbers: "off"
                       }}
                 />
             </div>

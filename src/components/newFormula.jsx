@@ -248,13 +248,13 @@ const NewFormula = () => {
           </Col>
           
         <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">Submit</Button>
-          </Form.Item>
+          <CustomEditor variables={tags} />
         </Col>
 
         <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
-          <CustomEditor variables={tags} />
+          <Form.Item>
+            <Button type="primary" htmlType="submit">Submit</Button>
+          </Form.Item>
         </Col>
         
         </Row>
