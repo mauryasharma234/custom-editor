@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { App, Button, Col, Form, Input, Popconfirm, Row, Select, Space, Table } from 'antd';
+import { App, Button, Col, Form, Input, Popconfirm, Row, Select, Space, Table, notification } from 'antd';
 import './index.css';
 import useSWR from 'swr';
-import { fetcher } from '../fetchers';
+import { creator, fetcher } from '../fetchers';
 import { DeleteOutlined } from '@ant-design/icons';
 import CustomTag from './tag';
 import CustomEditor from './custom';
+import { useNavigate } from 'react-router-dom';
 
 const EditableContext = React.createContext(null);
 
@@ -93,15 +94,12 @@ const EditableCell = ({
 };
 
 const NewFormula = () => {
-  const [form] = Form.useForm(); // Add form instance
+  const [form] = Form.useForm();
 
   const [dataSource, setDataSource] = useState([]);
   const [count, setCount] = useState(1);
   const [tags, setTags] = useState([]);
-  useEffect(() => {
-    console.log('tags', tags);
-  }, [tags])
-
+  const navigate = useNavigate();
 
   const {data: clientNames, isLoading: isClientNamesLoading} = useSWR(`/api/v1/test/getClientNames`, fetcher)
     const [existingClientNames, setExistingClientNames] = useState([]);
@@ -147,7 +145,32 @@ const NewFormula = () => {
   };
 
   const onFinish = (values) => {
-    console.log('Form values:', values);
+
+    const clientName = values.clientName[0];
+    const metaData = {};
+    values.tableData.forEach((item) => {
+      const { name, value } = item;
+      metaData[name] = value;
+    });
+    const transformedValues = {
+      clientName,
+      metaData,
+      expression: values.expression,
+      variables: values.variables,
+    };
+
+    creator('/api/v1/test/create', transformedValues)
+      .then(() => {
+        notification.success({ message: 'New Formula Created' });
+      })
+      .catch((err) => {
+        console.log(err);
+        notification.error({
+          description: JSON.stringify(err),
+          message: 'New Formula Creation Failed',
+        });
+      });
+      navigate('/');
   };
 
   const components = {
@@ -250,7 +273,16 @@ const NewFormula = () => {
         <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
           <CustomEditor variables={tags} />
         </Col>
-
+        
+        <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
+          <Form.Item
+            label={'Expression'}
+            name={'expression'}
+            rules={[{ message: `Please input an expression`, required: true }]}
+          >
+            <Input.TextArea />
+          </Form.Item>
+        </Col>
         <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
           <Form.Item>
             <Button type="primary" htmlType="submit">Submit</Button>
