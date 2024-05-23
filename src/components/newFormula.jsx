@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { App, Button, Col, Form, Input, Popconfirm, Row, Select, Table } from 'antd';
+import { App, Button, Col, Form, Input, Popconfirm, Row, Select, Space, Table } from 'antd';
 import './index.css';
 import useSWR from 'swr';
 import { fetcher } from '../fetchers';
 import { DeleteOutlined } from '@ant-design/icons';
 import CustomTag from './tag';
+import CustomEditor from './custom';
 
 const EditableContext = React.createContext(null);
 
@@ -97,6 +98,10 @@ const NewFormula = () => {
   const [dataSource, setDataSource] = useState([]);
   const [count, setCount] = useState(1);
   const [tags, setTags] = useState([]);
+  useEffect(() => {
+    console.log('tags', tags);
+  }, [tags])
+
 
   const {data: clientNames, isLoading: isClientNamesLoading} = useSWR(`/api/v1/test/getClientNames`, fetcher)
     const [existingClientNames, setExistingClientNames] = useState([]);
@@ -246,6 +251,10 @@ const NewFormula = () => {
           <Form.Item>
             <Button type="primary" htmlType="submit">Submit</Button>
           </Form.Item>
+        </Col>
+
+        <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
+          <CustomEditor variables={tags} />
         </Col>
         
         </Row>

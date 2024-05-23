@@ -6,6 +6,9 @@ import { Typography } from "antd";
 
 
 function CustomEditor({ variables }) {
+    useEffect(() => {
+        console.log("variables rec from this new component", variables);
+    }, [variables])
     const monaco = useMonaco();
     const [value, setValue] = useState('');
 
@@ -39,28 +42,6 @@ function CustomEditor({ variables }) {
             console.log('here is the monaco instance:', monaco);
             monaco.languages.register({ id: "mySpecialLanguage" });
 
-            // monaco.languages.setMonarchTokensProvider("mySpecialLanguage", {
-            //     variables,
-            //     functions,
-            //     tokenizer: {
-            //         root: [
-            //             [/\[error.*/, "custom-error"],
-            //             [/\[notice.*/, "custom-notice"],
-            //             [/\[info.*/, "custom-info"],
-            //             [/\[[a-zA-Z 0-9:]+\]/, "custom-date"],
-            //             [/@?[a-zA-Z][\w$]*/, {
-            //                 cases: {
-            //                     '@variables': 'keyword',
-            //                     '@functions': 'function',
-            //                     '@default': 'variable',
-            //                 }
-            //             }],
-            //             [/[+\-*/=><]/, "custom-operator"],
-            //             [/".*?"/, 'string'],
-            //             [/\/\//, 'comment'],
-            //         ]
-            //     },
-            // });
             monaco.languages.setMonarchTokensProvider("mySpecialLanguage", {
                 variables,
                 functions,
@@ -3557,6 +3538,7 @@ function CustomEditor({ variables }) {
 
                     ];
                     for (var i = 0; i < variables.length; i++) {
+                        console.log("now pushing", variables[i]);
                         suggestions.push({ label: "$" + variables[i], kind: monaco.languages.CompletionItemKind.Text, insertText: "$" + variables[i], range: range })
                     }
 
@@ -3618,7 +3600,7 @@ function CustomEditor({ variables }) {
             });
 
         }
-    }, [monaco]);
+    }, [monaco, variables]);
 
     return (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
