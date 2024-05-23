@@ -209,12 +209,12 @@ const NewFormula = () => {
         <Form.Item label="Metadata" name="metaData">
           <Button
             onClick={handleAdd}
-            type="primary"
+            type='primary'
             style={{
               marginBottom: 16,
             }}
           >
-            Add a row
+            Add a Key
           </Button>
           <Table
             components={components}
