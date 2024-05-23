@@ -3,6 +3,7 @@ import { Button, Col, Form, Input, Popconfirm, Row, Select, Table } from 'antd';
 import './index.css';
 import useSWR from 'swr';
 import { fetcher } from '../fetchers';
+import { DeleteOutlined } from '@ant-design/icons';
 
 const EditableContext = React.createContext(null);
 
@@ -163,7 +164,7 @@ const NewFormula = () => {
       render: (_, record) =>
         dataSource.length >= 1 ? (
           <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
-            <a>Delete</a>
+            <a><DeleteOutlined /></a>
           </Popconfirm>
         ) : null,
     },
