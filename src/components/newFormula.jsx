@@ -101,14 +101,14 @@ const NewFormula = () => {
   const [tags, setTags] = useState([]);
   const navigate = useNavigate();
 
-  const {data: clientNames, isLoading: isClientNamesLoading} = useSWR(`/api/v1/test/getClientNames`, fetcher)
-    const [existingClientNames, setExistingClientNames] = useState([]);
+  const { data: clientNames, isLoading: isClientNamesLoading } = useSWR(`/api/v1/test/getClientNames`, fetcher)
+  const [existingClientNames, setExistingClientNames] = useState([]);
 
-    useEffect(() => {
-        if(clientNames && !isClientNamesLoading){
-            setExistingClientNames(clientNames.map((x) => x))
-        }  
-    }, [clientNames])
+  useEffect(() => {
+    if (clientNames && !isClientNamesLoading) {
+      setExistingClientNames(clientNames.map((x) => x))
+    }
+  }, [clientNames])
 
   const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.key !== key);
@@ -170,7 +170,7 @@ const NewFormula = () => {
           message: 'New Formula Creation Failed',
         });
       });
-      navigate('/');
+    navigate('/');
   };
 
   const components = {
@@ -219,7 +219,7 @@ const NewFormula = () => {
       <Form form={form} onFinish={onFinish}>
         <Row align={'middle'} justify="start">
 
-        <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
+          <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
             <Form.Item
               label={'Client Name'}
               name={'clientName'}
@@ -239,27 +239,27 @@ const NewFormula = () => {
               />
             </Form.Item>
           </Col>
-       
-        <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
-        <Form.Item label="Metadata" name="tableData">
-          <Button
-            onClick={handleAdd}
-            type='primary'
-            style={{
-              marginBottom: 16,
-            }}
-          >
-            Add a Key
-          </Button>
-          <Table
-            components={components}
-            rowClassName={() => 'editable-row'}
-            bordered
-            dataSource={dataSource}
-            columns={columns}
-          />
-        </Form.Item>
-        </Col>
+
+          <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
+            <Form.Item label="Metadata" name="tableData">
+              <Button
+                onClick={handleAdd}
+                type='primary'
+                style={{
+                  marginBottom: 16,
+                }}
+              >
+                Add a Key
+              </Button>
+              <Table
+                components={components}
+                rowClassName={() => 'editable-row'}
+                bordered
+                dataSource={dataSource}
+                columns={columns}
+              />
+            </Form.Item>
+          </Col>
           <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
             <Form.Item
               label={'Variables'}
@@ -269,26 +269,26 @@ const NewFormula = () => {
               <CustomTag tags={tags} setTags={handleTagsChange} />
             </Form.Item>
           </Col>
-          
-        <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
-          <CustomEditor variables={tags} />
-        </Col>
-        
-        <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
-          <Form.Item
-            label={'Expression'}
-            name={'expression'}
-            rules={[{ message: `Please input an expression`, required: true }]}
-          >
-            <Input.TextArea />
-          </Form.Item>
-        </Col>
-        <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
-          <Form.Item>
-            <Button type="primary" htmlType="submit">Submit</Button>
-          </Form.Item>
-        </Col>
-        
+
+          <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
+            <CustomEditor variables={tags} />
+          </Col>
+
+          <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
+            <Form.Item
+              label={'Expression'}
+              name={'expression'}
+              rules={[{ message: `Please input an expression`, required: true }]}
+            >
+              <Input.TextArea />
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
+            <Form.Item>
+              <Button type="primary" htmlType="submit">Submit</Button>
+            </Form.Item>
+          </Col>
+
         </Row>
       </Form>
     </div>
