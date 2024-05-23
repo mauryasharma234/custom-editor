@@ -206,7 +206,7 @@ const NewFormula = () => {
           </Col>
        
         <Col xs={24} sm={24} md={19} lg={19} xl={19} xxl={19}>
-        <Form.Item label="Table Data" name="tableData">
+        <Form.Item label="Metadata" name="metaData">
           <Button
             onClick={handleAdd}
             type="primary"
