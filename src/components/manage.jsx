@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from 'axios';
 import useSWR from "swr"
 import { css } from "@emotion/react";
@@ -14,8 +14,11 @@ export default function Manage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
   const [isDeleted, setIsDeleted] = useState(false);
+  const [totalItems, setTotalItems] = useState(0);
 
   const { data: formulaData, isLoading: isFormulaDataLoading } = useSWR(`/api/v1/test/getAll?search=${search}&pageNumber=${currentPage}`, fetcher)
+  const[tableData, setTableData] = useState(formulaData?.data || []);
+
   console.log("formulaData", formulaData)
   const columns = [
     {
@@ -113,6 +116,41 @@ export default function Manage() {
       },
     },
   ]
+  useEffect(() => {
+    if (formulaData) {
+      setTableData(
+        formulaData.data.map((elem) => ({
+          ...elem,
+          key: elem.id,
+        }))
+      );
+      setTotalItems(formulaData.totalCount || 0);
+    }
+  }, [tableData]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get(
+          (import.meta.env.VITE_BACKEND_URL) +
+          `/api/v1/test/getAll?search=${search}&pageNumber=${currentPage}`,
+        );
+
+        setTableData(
+          res?.data?.data.map((elem) => {
+            return { ...elem, key: elem.id };
+          })
+        );
+        setTotalItems(res?.data?.totalCount || 0);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, [
+    isDeleted,
+    currentPage,
+    search
+  ]);
 
   return (
     <Space
@@ -128,8 +166,12 @@ export default function Manage() {
         <Col span={8}>
           <Input.Search
             placeholder="Search"
-            onSearch={(value) => setSearch(value)}
+            onSearch={(value) => {
+              setSearch(value);
+              setCurrentPage(1); // Reset to the first page on search
+            }}
             size="large"
+            
           />
         </Col>
         <Col flex="none">
@@ -155,13 +197,12 @@ export default function Manage() {
           current: currentPage,
           defaultPageSize: 10,
           onChange: setCurrentPage,
-          total: formulaData?.totalCount,
+          total: formulaData?.searchCount || totalItems,
         }}
         loading={isFormulaDataLoading}
-        dataSource={formulaData?.data}
+        dataSource={tableData}
         style={{ width: '100%' }}
       >
-
       </Table>
 
     </Space>
