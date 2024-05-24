@@ -119,6 +119,7 @@ function MyLayout() {
             paddingLeft: "10px",
             marginRight: "auto",
           }}>
+            <Link to="/">
           <Typography.Title
             style={{
               // display: logoTitleDisplay,
@@ -130,6 +131,7 @@ function MyLayout() {
             level={2}>
             Ensolver
           </Typography.Title>
+          </Link>
         </div>
         </Header>
       <Layout>
